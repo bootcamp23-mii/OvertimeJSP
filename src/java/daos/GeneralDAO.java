@@ -30,7 +30,6 @@ public class GeneralDAO<T> implements DAOInterface<T> {
     }
 
     public GeneralDAO() {
-
     }
 
     private String getQuery(String keyword) {

@@ -49,6 +49,10 @@ public class Task implements Serializable {
         this.id = id;
     }
 
+    public Task(String id, String name, Overtime overtime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getId() {
         return id;
     }

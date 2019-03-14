@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -67,6 +68,18 @@ public class Overtime implements Serializable {
     public Overtime(String id) {
         this.id = id;
     }
+
+    public Overtime(String id, Date date, Integer timeduration, String keterangan, List<Task> taskList, TimeSheet timesheet, Status status) {
+        this.id = id;
+        this.date = date;
+        this.timeduration = timeduration;
+        this.keterangan = keterangan;
+        this.taskList = taskList;
+        this.timesheet = timesheet;
+        this.status = status;
+    }
+
+    
 
     public String getId() {
         return id;
@@ -149,5 +162,5 @@ public class Overtime implements Serializable {
     public String toString() {
         return "models.Overtime[ id=" + id + " ]";
     }
-    
+
 }

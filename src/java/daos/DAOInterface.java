@@ -15,4 +15,7 @@ public interface DAOInterface<T> {
     public boolean saveOrDelete(T entity, boolean isSave);
     public List<T> getData(Object keyword);
     public T getById(Object id);
+    public List<T> login(Object username);
+    public T last(Object keyword);
+    public T first(Object keyword);
 }

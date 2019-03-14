@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,14 +9,15 @@ package daos;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author Pandu
- * @param <T>
+ * @author milhhamafemi
  */
 public class GeneralDAO<T> implements DAOInterface<T> {
 
@@ -24,15 +26,21 @@ public class GeneralDAO<T> implements DAOInterface<T> {
     private Transaction transaction;
     private T t;
 
-    public GeneralDAO(SessionFactory factory, T t) {
-        this.factory = factory;
-        this.t = t;
+    public GeneralDAO(SessionFactory factory, Class<T> t) {
+        try {
+            this.factory = factory;
+            this.t = t.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public GeneralDAO() {
+
     }
 
     private String getQuery(String keyword) {
+
         String query = "From " + t.getClass().getSimpleName();
         if (!keyword.equals("")) {
             query += " where ";
@@ -68,7 +76,10 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = (T) session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE id = '" + id + "'").uniqueResult();
+//            ClassMetadata classMetadata =  sessionFactory.getClassMetadata(t.getClass());
+            obj = (T) session.createQuery("FROM " + t.getClass().getSimpleName()
+                    + " WHERE " + factory.getClassMetadata(t.getClass()).getIdentifierPropertyName()
+                    + " = '" + id + "'").uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
@@ -102,4 +113,67 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         return result;
     }
 
+    @Override
+    public List<T> login(Object username) {
+        List<T> obj = new ArrayList<>();
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE USERNAME = '" + username + "'").list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
+
+    public T last(Object keyword) {
+        T obj = null;
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = (T) session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE id = ( select max(id) from " + t.getClass().getSimpleName() + ")").uniqueResult();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+
+        return obj;
+    }
+
+    public T first(Object keyword) {
+        T obj = null;
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = (T) session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE ROWID = ( select min(ROWID) from " + t.getClass().getSimpleName() + ")").uniqueResult();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
+
+    public List<T> getByKarByMang(Object id) {
+        List<T> obj = new ArrayList<>();
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE manager = '" + id + "'").list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
 }

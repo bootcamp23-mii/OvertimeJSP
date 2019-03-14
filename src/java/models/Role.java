@@ -52,6 +52,10 @@ public class Role implements Serializable {
         this.id = id;
     }
 
+    public Role(String id, String name, Employee employee, Job job) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getId() {
         return id;
     }

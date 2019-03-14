@@ -62,6 +62,10 @@ public class TimeSheet implements Serializable {
         this.id = id;
     }
 
+    public TimeSheet(String id, Date a, String name, Employee employee) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getId() {
         return id;
     }

@@ -6,6 +6,7 @@
 package models;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -80,6 +81,10 @@ public class Employee implements Serializable {
 
     public Employee(String id) {
         this.id = id;
+    }
+
+    public Employee(String id, String name, String address, String email, BigInteger bigInteger, Division division, Employee employee, Site site) {
+        this.id=id;
     }
 
     public String getId() {

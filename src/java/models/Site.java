@@ -53,6 +53,10 @@ public class Site implements Serializable {
         this.id = id;
     }
 
+    public Site(String id, String name, String location) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getId() {
         return id;
     }

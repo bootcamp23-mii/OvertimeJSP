@@ -50,6 +50,13 @@ public class Job implements Serializable {
         this.id = id;
     }
 
+    public Job(String id, String name) {
+       this.id= id;
+       this.position=name;
+    }
+
+    
+
     public String getId() {
         return id;
     }

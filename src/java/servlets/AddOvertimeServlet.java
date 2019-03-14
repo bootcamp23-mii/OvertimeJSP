@@ -5,8 +5,6 @@
  */
 package servlets;
 
-import controllers.EmployeeController;
-import controllers.EmployeeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,15 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.LoginSession;
 
 /**
  *
- * @author milhamafemi
+ * @author Pandu
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
- EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
+@WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
+public class AddOvertimeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,7 +34,15 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.sendRedirect("login.jsp");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddOvertimeServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddOvertimeServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -68,10 +72,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (eci.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
-            LoginSession.setIdUsername(request.getParameter("usernameLogin"));
-            response.sendRedirect("index.jsp");
-        }
         processRequest(request, response);
     }
 

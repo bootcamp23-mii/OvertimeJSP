@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 $(function () {
+    $("#nav_home").on("click", function () {
+        $("#loadthis").load("default.jsp");
+    });
     $("#nav_all").on("click", function () {
         $("#loadthis").load("content.jsp");
     });

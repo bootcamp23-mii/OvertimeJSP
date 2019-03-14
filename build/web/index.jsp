@@ -36,22 +36,16 @@
             <jsp:include page="sidebar.jsp"/>
             <!-- END MENU SIDEBAR-->
 
-            <!--CUSTOM CONTAINER-->
-
-
             <!-- PAGE CONTAINER-->
-
             <div class="page-container">
                 <!-- HEADER DESKTOP-->
                 <jsp:include page="header.jsp"/>
                 <!-- HEADER DESKTOP-->
-
                 <!-- MAIN CONTENT-->
                 <div class="main-content" id="loadthis">
-                    <h1>DEFAULT LANDING</h1>
+                    <jsp:include page="default.jsp"/>
                 </div>
                 <!-- END MAIN CONTENT-->
-
                 <!-- END PAGE CONTAINER-->
             </div>
             <jsp:include page="footer.jsp"/>

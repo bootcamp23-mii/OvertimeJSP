@@ -44,10 +44,12 @@
                             <i class="fas fa-history"></i>View</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                             <li>
-                                <a href="#" id="nav_history">History</a>
+                                <a href="#" id="nav_history">
+                                    <i class="fas fa-history"></i>History</a>
                             </li>
                             <li>
-                                <a href="#" id="nav_status">Status</a>
+                                <a href="#" id="nav_status">
+                                <i class="fas fa-exclamation"></i>Status</a>
                             </li>
                         </ul>
                     </li>

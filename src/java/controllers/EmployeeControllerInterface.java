@@ -14,7 +14,9 @@ import models.Employee;
  */
 public interface EmployeeControllerInterface {
 
-    public String insertOrUpdate(String id, String name, String address, String email, String salary, String division, String manager, String site);
+    public String insertOrUpdate(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager);
+
+    public String register(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager);
 
     public String delete(String id);
 
@@ -23,7 +25,9 @@ public interface EmployeeControllerInterface {
     public List<Employee> getData(String keyword);
 
     public Employee getById(String id);
-    
+
     public Employee last();
+
+    public boolean login(String username, String Password);
 
 }

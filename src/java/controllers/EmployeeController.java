@@ -5,14 +5,17 @@
  */
 package controllers;
 
+import static com.mchange.v2.c3p0.impl.C3P0Defaults.password;
 import daos.DAOInterface;
 import daos.GeneralDAO;
 import java.math.BigInteger;
 import java.util.List;
 import models.Division;
 import models.Employee;
+import models.LoginSession;
 import models.Site;
 import org.hibernate.SessionFactory;
+import tools.BCrypt;
 
 /**
  *
@@ -27,8 +30,17 @@ public class EmployeeController implements EmployeeControllerInterface {
     }
 
     @Override
-    public String insertOrUpdate(String id, String name, String address, String email, String salary, String division, String manager, String site) {
-        if (dao.saveOrDelete(new Employee(id, name, address, email, new BigInteger(salary), new Division(division), new Employee(manager), new Site(site)), true)) {
+    public String register(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager) {
+        String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, passwordHash, new Division(division), new Site(site), new Employee(idManager)), true)) {
+            return "Selamat penambahan karyawan berhasil";
+        }
+        return "Maaf coba lagi";
+    }
+
+    @Override
+    public String insertOrUpdate(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager) {
+        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, password, new Division(division), new Site(site), new Employee(idManager)), true)) {
             return "Selamat Data berhasil simpan";
         }
         return "Maaf Data gagal disimpan";
@@ -56,9 +68,23 @@ public class EmployeeController implements EmployeeControllerInterface {
     public Employee getById(String id) {
         return dao.getById(id);
     }
-    
+
     public Employee last() {
         return dao.last("");
     }
 
+    @Override
+    public boolean login(String username, String password) {
+        List<Employee> list = dao.login(username);
+        if (!list.isEmpty()) {
+            for (Employee employee : list) {
+                LoginSession.setIdUsername(employee.getId());
+                if (BCrypt.checkpw(password, employee.getPassword())) {
+                    return true;
+                }
+            }
+        }
+        System.out.println("List kosong");
+        return false;
+    }
 }

@@ -30,13 +30,29 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="md-form mb-5">
+                        <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">ID</label>
                             <input type="text" id="otId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
                         </div>
-                        <div class="md-form mb-5">
-                            <label data-error="wrong" data-success="true" class="">Nama</label>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="">Date</label>
+                            <input type="date" id="otdate" class="form-control" value=<%= (session.getAttribute("otDate") != null) ? session.getAttribute("otDate") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="">Duration</label>
+                            <input type="text" id="otduration" class="form-control" value=<%= (session.getAttribute("otDuration") != null) ? session.getAttribute("otDuration") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="">Description</label>
+                            <input type="text" id="otdesc" class="form-control" value=<%= (session.getAttribute("otDesc") != null) ? session.getAttribute("otDesc") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="">Time Sheet</label>
                             <input type="text" id="timesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="">Status</label>
+                            <input type="text" id="otstatus" class="form-control" value=<%= (session.getAttribute("otStatus") != null) ? session.getAttribute("otStatus") : ""%>>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -58,14 +74,17 @@
             <div class="row m-t-25">
             </div>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
                             <h3 class="title-2">ALL HISTORY</h3>
-                            <div class="chart-info">
-                                <div class="chart-info">
+                            <div class="row m-t-25">
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->
-                                    <table id="historyTable" class="table table-striped" cellspacing='30' align ='center'>
+
+                                    <table id="historyTable" class="table table-borderless table-striped table-earning" cellspacing='30' align ='center'>
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
@@ -89,11 +108,22 @@
                                                 <td><%= elem.getTimeduration()%></td>
                                                 <td><%= elem.getKeterangan()%></td>
                                                 <td><%= elem.getTimesheet().getId()%></td>
-                                                <td><%= elem.getStatus().getId()%></td>
+                                                <td><%= elem.getStatus().getStatus()%></td>
                                                 <td>
+                                                    <% if (!elem.getStatus().getId().equals("STA02")) {%>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOvertime" 
-                                                            data-getid="<%= elem.getId()%>" data-getts="<%= elem.getTimesheet().getId()%>">Edit</button>
-                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>">Hapus</button>
+                                                            data-getid="<%= elem.getId()%>" 
+                                                            data-getdate="<%= elem.getDate()%>" 
+                                                            data-getduration="<%= elem.getTimeduration()%>" 
+                                                            data-getdescription="<%= elem.getKeterangan()%>" 
+                                                            data-getts="<%= elem.getTimesheet().getId()%>"
+                                                            data-getstatus="<%= elem.getStatus().getStatus()%>" 
+                                                            >EDIT</button>
+                                                    
+                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>">DELETE</button>
+                                                    <%} else {%>
+                                                    <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
+                                                    <%}%>
                                                 </td>
                                             </tr>
                                             <%}
@@ -112,11 +142,19 @@
         $('#modalOvertime').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var id = button.data('getid')
+            var date = button.data('getdate')
+            var duration = button.data('getduration')
+            var desc = button.data('getdescription')
             var ts = button.data('getts')
+            var status = button.data('getstatus')
 
             var modal = $(this)
             modal.find('#otId').val(id)
+            modal.find('#otdate').val(date)
+            modal.find('#otduration').val(duration)
+            modal.find('#otdesc').val(desc)
             modal.find('#timesheet').val(ts)
+            modal.find('#otstatus').val(status)
         })
     </script>
 

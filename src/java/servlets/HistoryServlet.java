@@ -66,6 +66,10 @@ public class HistoryServlet extends HttpServlet {
             } else if (action.equalsIgnoreCase("update")) {
                 Overtime ot = oc.getById(request.getParameter("id"));
                 request.getSession().setAttribute("otId", ot.getId());
+                request.getSession().setAttribute("otDate", ot.getDate());
+                request.getSession().setAttribute("otDuration", ot.getTimeduration());
+                request.getSession().setAttribute("otDesc", ot.getKeterangan());
+                request.getSession().setAttribute("otStatus", ot.getStatus().getStatus());
                 request.getSession().setAttribute("timesheet", ot.getTimesheet().getId());
             }
         }

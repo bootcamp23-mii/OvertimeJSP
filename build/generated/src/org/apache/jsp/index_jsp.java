@@ -96,9 +96,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                <!-- END PAGE CONTAINER-->\n");
       out.write("            </div>\n");
-      out.write("            ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footer.jsp", out, false);
-      out.write("\n");
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <!-- Jquery JS-->\n");

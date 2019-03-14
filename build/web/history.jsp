@@ -58,7 +58,7 @@
             <div class="row m-t-25">
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
                             <h3 class="title-2">ALL HISTORY</h3>
@@ -93,8 +93,7 @@
                                                 <td>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOvertime" 
                                                             data-getid="<%= elem.getId()%>" data-getts="<%= elem.getTimesheet().getId()%>">Edit</button>
-
-                                                    <a href="HistoryServlet?action=delete&id=<%= elem.getId()%>">Hapus</a>
+                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>">Hapus</button>
                                                 </td>
                                             </tr>
                                             <%}
@@ -102,9 +101,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                            <div class="recent-report__chart">
-                                <canvas id="recent-rep-chart"></canvas>
                             </div>
                         </div>
                     </div>

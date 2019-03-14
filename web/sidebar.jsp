@@ -20,7 +20,7 @@
                     <!--IF POSIBLE, USE THE ACTIVE/INACTIVE STATUS TO NAVBAR BELOW-->
 
                     <li class="">
-                        <a class="js-arrow" href="index.jsp">
+                        <a id="nav_home" class="js-arrow" href="#">
                             <i class="fas fa-home"></i>Dashboard</a>
                     </li>
                     <li>

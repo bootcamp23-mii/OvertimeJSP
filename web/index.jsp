@@ -38,7 +38,9 @@
                 <!-- HEADER DESKTOP-->
 
                 <!-- MAIN CONTENT-->
-                <jsp:include page="content.jsp"/>
+                <div class="main-content" id="loadthis">
+
+                </div>
                 <!-- END MAIN CONTENT-->
 
                 <!-- END PAGE CONTAINER-->
@@ -68,6 +70,7 @@
 
         <!-- Main JS-->
         <script src="js/main.js"></script>
+        <script src="js/selfScript.js"></script>
 
     </body>
 

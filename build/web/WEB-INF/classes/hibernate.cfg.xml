@@ -40,14 +40,24 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/overtime?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
-    <!--<property name="hibernate.connection.password"></property>-->
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.show_sql">false</property>
-    <property name="hibernate.connection.autocommit">true</property>
-    <property name="hibernate.default_schema">overtime</property>
-  </session-factory>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/overtime?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.username">root</property>
+        <!--<property name="hibernate.connection.password"></property>-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.connection.autocommit">true</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+        <property name="hibernate.default_schema">overtime</property>
+        <mapping class="models.Division"/>
+        <mapping class="models.Employee"/>
+        <mapping class="models.Job"/>
+        <mapping class="models.Overtime"/>
+        <mapping class="models.Role"/>
+        <mapping class="models.Site"/>
+        <mapping class="models.Status"/>
+        <mapping class="models.Task"/>
+        <mapping class="models.TimeSheet"/>
+    </session-factory>
 </hibernate-configuration>

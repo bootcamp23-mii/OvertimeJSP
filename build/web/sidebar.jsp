@@ -17,31 +17,37 @@
             <nav class="navbar-sidebar">
                 <ul class="list-unstyled navbar__list">
 
-                    <li class="active has-sub">
-                        <a class="js-arrow" href="/content/index.html">
+                    <!--IF POSIBLE, USE THE ACTIVE/INACTIVE STATUS TO NAVBAR BELOW-->
+
+                    <li class="">
+                        <a class="js-arrow" href="index.jsp">
                             <i class="fas fa-home"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="/content/table.html">
+                        <a href="#" id="nav_all">
                             <i class="fas fa-tachometer-alt"></i>All Record</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#" id="nav_add">
+                            <i class="fas fa-tachometer-alt"></i>Add Request</a>
+                    </li>
+                    <li>
+                        <a href="#" id="nav_calender">
                             <i class="fas fa-calendar-alt"></i>Calendar</a>
                     </li>
                     <li>
-                        <a href="/content/map.html">
-                            <i class="fas fa-user-circle"></i>PROFILE</a>
+                        <a href="#" id="nav_profile" >
+                            <i class="fas fa-user-circle"></i>Profile</a>
                     </li>
                     <li class="has-sub">
                         <a class="js-arrow" href="#">
-                            <i class="fas fa-history"></i>VIEW</a>
+                            <i class="fas fa-history"></i>View</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                             <li>
-                                <a href="#">HISTORY</a>
+                                <a href="#" id="nav_history">History</a>
                             </li>
                             <li>
-                                <a href="#">STATUS</a>
+                                <a href="#" id="nav_status">Status</a>
                             </li>
                         </ul>
                     </li>

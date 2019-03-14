@@ -9,7 +9,7 @@
                     <div class="container-fluid">
                         <div class="header-mobile-inner">
                             <a class="logo" href="index.html">
-                                <img src="images/icon/logo.png" alt="CoolAdmin" />
+                                <img src="images/icon/home.png" alt="CoolAdmin" />
                             </a>
                             <button class="hamburger hamburger--slider" type="button">
                                 <span class="hamburger-box">
@@ -45,6 +45,7 @@
 
                 <!-- END PAGE CONTAINER-->
             </div>
+            <jsp:include page="footer.jsp"/>
         </div>
 
         <!-- Jquery JS-->

@@ -18,7 +18,7 @@ public interface OvertimeControllerInterface {
 
     public String update(String id, String overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
 
-    public String delete(String id, String overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
+    public String delete(String id);
 
     public Overtime getById(String id);
 

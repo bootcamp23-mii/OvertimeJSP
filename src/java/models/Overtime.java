@@ -69,17 +69,14 @@ public class Overtime implements Serializable {
         this.id = id;
     }
 
-    public Overtime(String id, Date date, Integer timeduration, String keterangan, List<Task> taskList, TimeSheet timesheet, Status status) {
+    public Overtime(String id, Date date, Integer timeduration, String keterangan, TimeSheet timesheet, Status status) {
         this.id = id;
         this.date = date;
         this.timeduration = timeduration;
         this.keterangan = keterangan;
-        this.taskList = taskList;
         this.timesheet = timesheet;
         this.status = status;
     }
-
-    
 
     public String getId() {
         return id;

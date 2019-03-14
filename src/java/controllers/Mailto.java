@@ -66,7 +66,7 @@ public class Mailto {
 
                 // Fill the message
 //                messageBodyPart.setText("" + sdf.format(tgl.getTime()));
-                messageBodyPart.setText("username: " + username + "\n" + "Password: " + password );
+                messageBodyPart.setText("username: " + username + "\n" + "Password: " + password);
 //                messageBodyPart.setText("Haloo " + Judul);
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(messageBodyPart);

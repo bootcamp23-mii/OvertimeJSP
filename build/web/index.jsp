@@ -1,4 +1,13 @@
+<%@page import="models.Overtime"%>
 <!DOCTYPE html>
+
+<%boolean cekData = session.getAttribute("data") != null;
+    Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
+    boolean cekList = session.getAttribute("data") != null;
+    if (!cekList) {
+        response.sendRedirect("./HistoryServlet");
+    }
+%>
 <html lang="en">
     <jsp:include page="head.jsp"/>
     <body class="animsition">

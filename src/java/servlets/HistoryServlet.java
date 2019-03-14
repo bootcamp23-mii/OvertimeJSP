@@ -5,13 +5,18 @@
  */
 package servlets;
 
+import controllers.OvertimeController;
+import controllers.OvertimeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Overtime;
+import tools.HibernateUtil;
 
 /**
  *
@@ -19,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "HistoryServlet", urlPatterns = {"/HistoryServlet"})
 public class HistoryServlet extends HttpServlet {
+
+    OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
+    List<Overtime> data = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +41,9 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HistoryServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HistoryServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            data = oc.getAll();
+            request.getSession().setAttribute("data", data);
+            response.sendRedirect("index.jsp");
         }
     }
 
@@ -58,6 +59,16 @@ public class HistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action != null) {
+            if (action.equalsIgnoreCase("delete")) {
+                oc.delete(request.getParameter("id"));
+            } else if (action.equalsIgnoreCase("update")) {
+                Overtime ot = oc.getById(request.getParameter("id"));
+                request.getSession().setAttribute("otId", ot.getId());
+                request.getSession().setAttribute("timesheet", ot.getTimesheet().getId());
+            }
+        }
         processRequest(request, response);
     }
 

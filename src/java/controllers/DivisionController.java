@@ -18,7 +18,6 @@ import org.hibernate.SessionFactory;
 public class DivisionController implements DivisionControllerInterface {
 
     private DAOInterface<Division> dao;
-    
 
     public DivisionController(SessionFactory factory) {
         dao = new GeneralDAO<>(factory, Division.class);

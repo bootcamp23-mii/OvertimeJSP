@@ -5,6 +5,8 @@
  */
 package tools;
 
+import controllers.EmployeeController;
+import controllers.EmployeeControllerInterface;
 import controllers.OvertimeController;
 import controllers.OvertimeControllerInterface;
 import models.Overtime;
@@ -19,14 +21,16 @@ public class NewClass {
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         OvertimeControllerInterface oc = new OvertimeController(sessionFactory);
-//        System.out.println(oc.getAll());
+        EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
 //        
-        for (Overtime overtime : oc.getAll()) {
-            System.out.println(overtime.getId());
-            System.out.println(overtime.getDate());
-            System.out.println(overtime.getStatus().getId());
-            System.out.println(overtime.getKeterangan());
-            System.out.println(overtime.getTimesheet().getId());
-        }
+        /**
+         * for (Overtime overtime : oc.getAll()) {
+         * System.out.println(overtime.getId());
+         * System.out.println(overtime.getDate());
+         * System.out.println(overtime.getStatus().getId());
+         * System.out.println(overtime.getKeterangan());
+         * System.out.println(overtime.getTimesheet().getId()); }
+         */
+        System.out.println(ec.register("EMP04", "Pandu", "Jawa Timur", "1000000", "mpandugalang@gmail.com", "pandu", "DIV01", "SIT02", "EMP02"));
     }
 }

@@ -83,8 +83,16 @@ public class Employee implements Serializable {
         this.id = id;
     }
 
-    public Employee(String id, String name, String address, String email, BigInteger bigInteger, Division division, Employee employee, Site site) {
-        this.id=id;
+    public Employee(String id, String name, String address, Integer salary, String email, String pass, Division division, Site site, Employee idmanager) {
+        this.id = id;
+        this.name=name;
+        this.address=address;
+        this.salary=salary;
+        this.email=email;
+        this.password=pass;
+        this.division=division;
+        this.site=site;
+        this.manager=idmanager;        
     }
 
     public String getId() {
@@ -218,5 +226,5 @@ public class Employee implements Serializable {
     public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
-    
+
 }

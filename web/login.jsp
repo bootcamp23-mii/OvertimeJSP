@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <jsp:include page="head.jsp"/>
     <div class="page-wrapper">
         <div class="page-content--bge5">
             <div class="container">
@@ -20,28 +21,28 @@
                         <div class="login-form">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <label>ID Employee</label>
+                                    <input class="au-input au-input--full" type="text" name="usernameLogin" placeholder="Input ID Employee">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="passwordLogin" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
+                                    <!--                                    <label>
+                                                                            <input type="checkbox" name="remember">Remember Me
+                                                                        </label>-->
                                     <label>
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                                <div class="social-login-content">
+<!--                                <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
                                         <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
                                     </div>
-                                </div>
+                                </div>-->
                             </form>
                             <div class="register-link">
                                 <p>

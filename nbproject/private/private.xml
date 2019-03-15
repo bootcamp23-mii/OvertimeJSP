@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/index.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/history.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/sidebar.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/js/selfScript.js</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/landingPage.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/default.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/servlets/HistoryServlet.java</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/servlets/AddOvertimeServlet.java</file>
         </group>
     </open-files>
 </project-private>

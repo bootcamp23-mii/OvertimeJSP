@@ -5,10 +5,9 @@
     Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
     boolean cekList = session.getAttribute("data") != null;
     boolean cekLog = session.getAttribute("login") != null;
-    if(!cekLog){
+    if (!cekLog) {
         response.sendRedirect("./LoginServlet");
-    }
-    if (!cekList) {
+    } else if (!cekList) {
         response.sendRedirect("./HistoryServlet");
     }
 %>

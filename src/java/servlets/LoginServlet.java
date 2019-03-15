@@ -23,7 +23,8 @@ import sun.security.pkcs11.wrapper.Functions;
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
- EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
+
+    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,8 +39,6 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int data = 1;
-            request.getSession().setAttribute("login", data);
             /* TODO output your page here. You may use following sample code. */
             response.sendRedirect("login.jsp");
         }
@@ -73,9 +72,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         if (eci.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
-            
+            String data = request.getParameter("usernameLogin");
+            request.getSession().setAttribute("login", data);
             response.sendRedirect("index.jsp");
-        }else{
+        } else {
             processRequest(request, response);
 //            response.sendRedirect("index.jsp");
         }

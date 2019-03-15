@@ -9,13 +9,16 @@ import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Employee;
 import models.LoginSession;
 import sun.security.pkcs11.wrapper.Functions;
+import tools.HibernateUtil;
 
 /**
  *
@@ -24,7 +27,9 @@ import sun.security.pkcs11.wrapper.Functions;
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
-    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
+//    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
+    EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
+//    List<Employee> data = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,10 +75,24 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (eci.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
+        if (ec.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
             String data = request.getParameter("usernameLogin");
+
+//            for (Employee employee : (List<Employee>) ec.getById(data)) {
+            Employee employee = ec.getById(data);
+            request.getSession().setAttribute("empid", employee.getId());
+            request.getSession().setAttribute("empname", employee.getName());
+            request.getSession().setAttribute("empaddress", employee.getAddress());
+            request.getSession().setAttribute("empsalary", employee.getSalary());
+            request.getSession().setAttribute("empemail", employee.getEmail());
+            request.getSession().setAttribute("empdivision", employee.getDivision().getName());
+            request.getSession().setAttribute("empsite", employee.getSite().getName());
+            request.getSession().setAttribute("empmanager", employee.getManager().getName());
+
+//            }
             request.getSession().setAttribute("login", data);
+
             response.sendRedirect("index.jsp");
         } else {
             processRequest(request, response);

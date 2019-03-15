@@ -36,6 +36,7 @@
             <!-- END HEADER MOBILE-->
 
             <!-- MENU SIDEBAR-->
+            <% //if(request.getParameter("loginjobs").equals("E1")){%>
             <jsp:include page="sidebar.jsp"/>
             <!-- END MENU SIDEBAR-->
 

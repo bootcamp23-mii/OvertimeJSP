@@ -74,9 +74,9 @@
                                         </div>
                                         <div class="content">
                                             <h5 class="name">
-                                                <a href="#">PANDU MALIK</a>
+                                                <a href="#"><%= (session.getAttribute("empname") != null) ? session.getAttribute("empname") : ""%></a>
                                             </h5>
-                                            <span class="email">mpandugalang@gmail.com</span>
+                                            <span class="email"><%= (session.getAttribute("empemail") != null) ? session.getAttribute("empemail") : ""%></span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">

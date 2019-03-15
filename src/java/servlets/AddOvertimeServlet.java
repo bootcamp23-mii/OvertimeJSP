@@ -5,13 +5,18 @@
  */
 package servlets;
 
+import controllers.OvertimeController;
+import controllers.OvertimeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Overtime;
+import tools.HibernateUtil;
 
 /**
  *
@@ -19,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
 public class AddOvertimeServlet extends HttpServlet {
+
+    OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
+    List<Overtime> data = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,7 +72,9 @@ public class AddOvertimeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (oc.insert("", request.getParameter("#tf-date"), request.getParameter("#tf-duration"), request.getParameter("#tf-description"), "STA01", "TSH01") != null) {
+            processRequest(request, response);
+        }
     }
 
     /**

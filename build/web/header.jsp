@@ -69,6 +69,7 @@
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
+                                                <!--RETRIEVE IMAGES FROM DB-->
                                                 <img src="images/icon/user.png" alt="Pandu Galang" />
                                             </a>
                                         </div>

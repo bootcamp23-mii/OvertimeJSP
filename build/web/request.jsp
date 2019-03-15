@@ -33,7 +33,7 @@
                                         <label for="tf-date" class=" form-control-label">Date</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="datetime-local" id="tf-date" name="tf-date" placeholder="Date" class="form-control" />
+                                        <input type="date" id="tf-date" name="tf-date" placeholder="Date" class="form-control" />
                                         <span class="help-block">Enter The Date</span>
                                     </div>
                                 </div>

@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">SHOW DATA</h2>
+                        <h2 class="title-1">ALL HISTORY</h2>
                     </div>
                 </div>
             </div>
@@ -77,9 +77,9 @@
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            <h3 class="title-2">ALL HISTORY</h3>
+<!--                            <h3 class="title-2">ALL HISTORY</h3>
                             <div class="row m-t-25">
-                            </div>
+                            </div>-->
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->

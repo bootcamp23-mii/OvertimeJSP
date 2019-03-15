@@ -78,12 +78,9 @@ public class AddOvertimeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            if (oc.insert("IDHERE", String.valueOf(sdf.parse(request.getParameter("tf-date"))), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), "TSH01", "STA01") != null) {
-                processRequest(request, response);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(AddOvertimeServlet.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (oc.insert("IDHERE", String.valueOf(request.getParameter("tf-date")), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), "TSH01", "STA01") != null) {
+            processRequest(request, response);
         }
     }
 

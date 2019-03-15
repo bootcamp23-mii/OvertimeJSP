@@ -27,13 +27,13 @@
                             <h3 class="title-2">REQUEST FORM</h3>
                             <div class="row m-t-25">
                             </div>
-                            <form action="" method="post" class="form-horizontal">
+                            <form action="AddOvertimeServlet" method="POST" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="tf-date" class=" form-control-label">Date</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="datetime-local" id="tf-date" name="tf-date" placeholder="Date" class="form-control">
+                                        <input type="datetime-local" id="tf-date" name="tf-date" placeholder="Date" class="form-control" />
                                         <span class="help-block">Enter The Date</span>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                         <label for="tf-duration" class=" form-control-label">Time Duration</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="number" id="tf-duration" name="tf-duration" placeholder="Duration" class="form-control">
+                                        <input type="number" id="tf-duration" name="tf-duration" placeholder="Duration" class="form-control" />
                                         <span class="help-block">How Long Your Overtime Hours</span>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                         <label for="tf-description" class=" form-control-label">Description</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="tf-description" name="tf-description" placeholder="Description" class="form-control">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="Description" class="form-control" />
                                         <span class="help-block">What Are You Doing During Overtime</span>
                                     </div>
                                 </div>
@@ -63,17 +63,17 @@
                                         <label for="tf-timesheet" class=" form-control-label">Active Time Sheet</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="tf-timesheet" name="tf-timesheet" disabled="true" placeholder="Time Sheet" class="form-control">
+                                        <input type="text" id="tf-timesheet" name="tf-timesheet" disabled="true" placeholder="Time Sheet" class="form-control"/>
                                         <span class="help-block">SELECTED TIMESHEET</span>
                                     </div>
                                 </div>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
                             </form>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Submit
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                <i class="fa fa-ban"></i> Reset
-                            </button>
                         </div>
                     </div>
                 </div>

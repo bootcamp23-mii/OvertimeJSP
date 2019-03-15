@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" value="Save" name="save" />
+                        <button class="btn btn-primary" type="submit" value="Save" name="save" >SAVE</button>
                     </div>
                 </div>
             </div>

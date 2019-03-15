@@ -9,7 +9,11 @@ import controllers.OvertimeController;
 import controllers.OvertimeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +29,7 @@ import tools.HibernateUtil;
 @WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
 public class AddOvertimeServlet extends HttpServlet {
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
     List<Overtime> data = null;
 
@@ -69,12 +74,18 @@ public class AddOvertimeServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+//    String.valueOf(sdf.parse(request.getParameter("tf-date")))
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (oc.insert("", request.getParameter("#tf-date"), request.getParameter("#tf-duration"), request.getParameter("#tf-description"), "STA01", "TSH01") != null) {
-            processRequest(request, response);
-        }
+            if (oc.insert("IDHERE","2019-03-15" , String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), "TSH01", "STA01") != null) {
+                processRequest(request, response);
+            }
+//        try {
+//        } catch (ParseException ex) {
+//            Logger.getLogger(AddOvertimeServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.LoginSession;
+import sun.security.pkcs11.wrapper.Functions;
 
 /**
  *
@@ -37,6 +38,8 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            int data = 1;
+            request.getSession().setAttribute("login", data);
             /* TODO output your page here. You may use following sample code. */
             response.sendRedirect("login.jsp");
         }
@@ -70,9 +73,12 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         if (eci.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
+            
             response.sendRedirect("index.jsp");
+        }else{
+            processRequest(request, response);
+//            response.sendRedirect("index.jsp");
         }
-        processRequest(request, response);
     }
 
     /**

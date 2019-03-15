@@ -17,12 +17,13 @@ import org.hibernate.SessionFactory;
  * @author Pandu
  */
 public class NewClass {
-
+    
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         OvertimeControllerInterface oc = new OvertimeController(sessionFactory);
         EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
 //        
+//        System.out.println(oc.insert("OVT5", "2019-03-15", "2", "Doing Test", "TSH01", "STA01"));
         /**
          * for (Overtime overtime : oc.getAll()) {
          * System.out.println(overtime.getId());

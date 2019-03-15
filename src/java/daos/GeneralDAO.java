@@ -119,7 +119,7 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE USERNAME = '" + username + "'").list();
+            obj = session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE ID = '" + username + "'").list();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {

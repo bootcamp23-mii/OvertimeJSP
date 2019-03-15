@@ -1,9 +1,13 @@
 <%@page import="models.Overtime"%>
 <!DOCTYPE html>
 
-<%boolean cekData = session.getAttribute("data") != null;
+<%  boolean cekData = session.getAttribute("data") != null;
     Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
     boolean cekList = session.getAttribute("data") != null;
+    boolean cekLog = session.getAttribute("login") != null;
+    if(!cekLog){
+        response.sendRedirect("./LoginServlet");
+    }
     if (!cekList) {
         response.sendRedirect("./HistoryServlet");
     }

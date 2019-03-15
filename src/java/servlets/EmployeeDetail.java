@@ -5,33 +5,28 @@
  */
 package servlets;
 
-import controllers.OvertimeController;
-import controllers.OvertimeControllerInterface;
+import controllers.EmployeeController;
+import controllers.EmployeeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Overtime;
+import models.Employee;
 import tools.HibernateUtil;
 
 /**
  *
  * @author Pandu
  */
-@WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
-public class AddOvertimeServlet extends HttpServlet {
+@WebServlet(name = "EmployeeDetail", urlPatterns = {"/EmployeeDetail"})
+public class EmployeeDetail extends HttpServlet {
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
-    List<Overtime> data = null;
+    EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
+    List<Employee> data = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,6 +58,16 @@ public class AddOvertimeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Employee employee = ec.getById(request.getParameter("login"));
+        request.getSession().setAttribute("empid", employee.getId());
+        request.getSession().setAttribute("empname", employee.getName());
+        request.getSession().setAttribute("empaddress", employee.getAddress());
+        request.getSession().setAttribute("empsalary", employee.getSalary());
+        request.getSession().setAttribute("empemail", employee.getEmail());
+        request.getSession().setAttribute("empdivision", employee.getDivision().getName());
+        request.getSession().setAttribute("empsite", employee.getSite().getName());
+        request.getSession().setAttribute("empmanager", employee.getManager().getName());
         processRequest(request, response);
     }
 
@@ -74,17 +79,10 @@ public class AddOvertimeServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-//    String.valueOf(sdf.parse(request.getParameter("tf-date")))
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            if (oc.insert("IDHERE", String.valueOf(sdf.parse(request.getParameter("tf-date"))), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), "TSH01", "STA01") != null) {
-                processRequest(request, response);
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(AddOvertimeServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

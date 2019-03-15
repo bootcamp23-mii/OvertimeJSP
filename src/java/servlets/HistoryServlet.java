@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Overtime;
+import org.hibernate.Session;
 import tools.HibernateUtil;
 
 /**
@@ -27,6 +28,7 @@ public class HistoryServlet extends HttpServlet {
 
     OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
     List<Overtime> data = null;
+//    List<Overtime> dato = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,8 +43,13 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            data = oc.getAll();
+//            data = oc.getAll();
+//            request.getSession().setAttribute("data", data);
+//            String raw = request.getParameter("login");
+            String x = String.valueOf(request.getSession().getAttribute("login"));
+            data = oc.empOvertime(x);
             request.getSession().setAttribute("data", data);
+
             response.sendRedirect("index.jsp");
         }
     }

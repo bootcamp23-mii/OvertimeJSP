@@ -55,4 +55,12 @@
                 </div>
             </div>
         </div>
+        <% session.removeAttribute("login"); %>
+        <% session.removeAttribute("otId"); %>
+        <% session.removeAttribute("otDate"); %>
+        <% session.removeAttribute("otDuration"); %>
+        <% session.removeAttribute("otDesc"); %>
+        <% session.removeAttribute("otStatus"); %>
+        <% session.removeAttribute("timesheet"); %>
+        <% session.removeAttribute("data"); %>
 </html>

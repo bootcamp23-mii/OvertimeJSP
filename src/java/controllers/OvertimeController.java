@@ -91,4 +91,9 @@ public class OvertimeController implements OvertimeControllerInterface {
         return dao.last("");
     }
 
+    @Override
+    public List<Overtime> empOvertime(String id) {
+        return dao.empOvertime(id);
+    }
+
 }

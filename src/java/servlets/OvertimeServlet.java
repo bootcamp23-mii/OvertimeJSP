@@ -5,20 +5,30 @@
  */
 package servlets;
 
+import controllers.OvertimeController;
+import controllers.OvertimeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Overtime;
+import tools.HibernateUtil;
 
 /**
  *
  * @author Pandu
  */
-@WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
-public class UserServlet extends HttpServlet {
+@WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
+public class OvertimeServlet extends HttpServlet {
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
+    List<Overtime> data = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +43,7 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UserServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UserServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            response.sendRedirect("index.jsp");
         }
     }
 
@@ -69,10 +70,13 @@ public class UserServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+//    String.valueOf(sdf.parse(request.getParameter("tf-date")))
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (oc.insert("IDHERE", String.valueOf(request.getParameter("tf-date")), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), request.getParameter("tf-timesheet"), "STA01") != null) {
+            processRequest(request, response);
+        }
     }
 
     /**

@@ -13,6 +13,7 @@
 %>
 <html lang="en">
     <jsp:include page="head.jsp"/>
+    <h1><%out.print(cekLog); %></h1>
     <body class="animsition">
         <div class="page-wrapper">
             <!-- HEADER MOBILE-->

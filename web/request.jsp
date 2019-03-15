@@ -27,7 +27,7 @@
                             <h3 class="title-2">REQUEST FORM</h3>
                             <div class="row m-t-25">
                             </div>
-                            <form action="AddOvertimeServlet" method="POST" class="form-horizontal">
+                            <form action="OvertimeServlet" method="POST" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="tf-date" class=" form-control-label">Date</label>
@@ -63,8 +63,8 @@
                                         <label for="tf-timesheet" class=" form-control-label">Active Time Sheet</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="tf-timesheet" name="tf-timesheet" disabled="true" placeholder="Time Sheet" class="form-control"/>
-                                        <span class="help-block">SELECTED TIMESHEET</span>
+                                        <input type="text" id="tf-timesheet" name="tf-timesheet" placeholder="Time Sheet" class="form-control"/>
+                                        <span class="help-block"><%= out.print("ddd") %></span>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">

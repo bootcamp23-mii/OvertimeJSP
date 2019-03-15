@@ -176,4 +176,21 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         }
         return obj;
     }
+
+    @Override
+    public List<T> empOvertime(Object keyword) {
+        List<T> obj = new ArrayList<>();
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = session.createQuery("from Overtime where timesheet in(from TimeSheet where employee = '"+keyword+"')").list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
+
 }

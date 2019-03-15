@@ -26,6 +26,9 @@ public interface OvertimeControllerInterface {
 
     public List<Overtime> getAll();
     
+    public List<Overtime> empOvertime(String id);
+            
     public Overtime last();
+    
     public Overtime first();
 }

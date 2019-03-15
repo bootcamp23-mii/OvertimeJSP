@@ -77,9 +77,9 @@
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-<!--                            <h3 class="title-2">ALL HISTORY</h3>
-                            <div class="row m-t-25">
-                            </div>-->
+                            <!--                            <h3 class="title-2">ALL HISTORY</h3>
+                                                        <div class="row m-t-25">
+                                                        </div>-->
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->
@@ -119,7 +119,6 @@
                                                             data-getts="<%= elem.getTimesheet().getId()%>"
                                                             data-getstatus="<%= elem.getStatus().getStatus()%>" 
                                                             >EDIT</button>
-                                                    
                                                     <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>">DELETE</button>
                                                     <%} else {%>
                                                     <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
@@ -127,6 +126,8 @@
                                                 </td>
                                             </tr>
                                             <%}
+                                                } else {
+                                                response.sendRedirect("./HistoryServlet");
                                                 }%>
                                         </tbody>
                                     </table>

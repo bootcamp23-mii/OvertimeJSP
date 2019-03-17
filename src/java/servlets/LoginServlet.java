@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            
             response.sendRedirect("login.jsp");
         }
     }
@@ -77,7 +77,6 @@ public class LoginServlet extends HttpServlet {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
             String data = request.getParameter("usernameLogin");
 
-//            for (Employee employee : (List<Employee>) ec.getById(data)) {
             Employee employee = ec.getById(data);
             request.getSession().setAttribute("empid", employee.getId());
             request.getSession().setAttribute("empname", employee.getName());
@@ -88,13 +87,10 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("empsite", employee.getSite().getName());
             request.getSession().setAttribute("empmanager", employee.getManager().getName());
 
-//            }
             request.getSession().setAttribute("login", data);
-
             response.sendRedirect("index.jsp");
         } else {
             processRequest(request, response);
-//            response.sendRedirect("index.jsp");
         }
     }
 

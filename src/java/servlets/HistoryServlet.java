@@ -43,9 +43,7 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            data = oc.getAll();
-//            request.getSession().setAttribute("data", data);
-//            String raw = request.getParameter("login");
+
             String x = String.valueOf(request.getSession().getAttribute("login"));
             data = oc.empOvertime(x);
             request.getSession().setAttribute("data", data);

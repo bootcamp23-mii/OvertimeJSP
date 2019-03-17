@@ -14,4 +14,5 @@ import models.Role;
  */
 public interface RoleControllerInterface {
     public List<Role> getRoleJob(String jobs);
+    public Role getById(String id);
 }

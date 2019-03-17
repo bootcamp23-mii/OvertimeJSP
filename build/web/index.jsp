@@ -37,8 +37,19 @@
             <!-- END HEADER MOBILE-->
 
             <!-- MENU SIDEBAR-->
-            <% //if(request.getParameter("loginjobs").equals("E1")){%>
+            <% //if (request.getParameter("role").equals("TEAM MEMBER")) {%>
+            
             <jsp:include page="sidebar.jsp"/>
+            
+            <% //} else if (request.getParameter("role").equals("TEAM MANAGER")) {%>
+            
+           <%-- <jsp:include page="sidebarManager.jsp"/>
+            
+            <% //} else { %>
+            
+            <%<jsp:include page="sidebarAdmin.jsp"/>--%>
+            
+            <% // } %>
             <!-- END MENU SIDEBAR-->
 
             <!-- PAGE CONTAINER-->

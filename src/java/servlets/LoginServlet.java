@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Employee;
 import models.LoginSession;
+import org.hibernate.Session;
 import tools.HibernateUtil;
 
 /**
@@ -76,8 +77,9 @@ public class LoginServlet extends HttpServlet {
         if (ec.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
             String data = request.getParameter("usernameLogin");
-
+            String role= ec.getById(data).getRoleList().get(0).getJob().getPosition();
 //            for (Employee employee : (List<Employee>) ec.getById(data)) {
+
             Employee employee = ec.getById(data);
             request.getSession().setAttribute("empid", employee.getId());
             request.getSession().setAttribute("empname", employee.getName());
@@ -87,13 +89,11 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("empdivision", employee.getDivision().getName());
             request.getSession().setAttribute("empsite", employee.getSite().getName());
             request.getSession().setAttribute("empmanager", employee.getManager().getName());
-//            request.getSession().setAttribute("empjob", employee.);
-
+            request.getSession().setAttribute("role", role);
+            
+            
 //            }
             request.getSession().setAttribute("login", data);
-            if (true) {
-                
-            }
             response.sendRedirect("index.jsp");
         } else {
             processRequest(request, response);

@@ -12,7 +12,9 @@ import java.math.BigInteger;
 import java.util.List;
 import models.Division;
 import models.Employee;
+import models.Job;
 import models.LoginSession;
+import models.Role;
 import models.Site;
 import org.hibernate.SessionFactory;
 import tools.BCrypt;
@@ -87,4 +89,6 @@ public class EmployeeController implements EmployeeControllerInterface {
         System.out.println("List kosong");
         return false;
     }
+    
+    
 }

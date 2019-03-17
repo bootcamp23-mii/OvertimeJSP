@@ -87,10 +87,13 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("empdivision", employee.getDivision().getName());
             request.getSession().setAttribute("empsite", employee.getSite().getName());
             request.getSession().setAttribute("empmanager", employee.getManager().getName());
+//            request.getSession().setAttribute("empjob", employee.);
 
 //            }
             request.getSession().setAttribute("login", data);
-
+            if (true) {
+                
+            }
             response.sendRedirect("index.jsp");
         } else {
             processRequest(request, response);

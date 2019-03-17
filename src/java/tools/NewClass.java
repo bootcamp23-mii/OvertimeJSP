@@ -9,6 +9,8 @@ import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
 import controllers.OvertimeController;
 import controllers.OvertimeControllerInterface;
+import controllers.RoleController;
+import controllers.RoleControllerInterface;
 import models.Overtime;
 import org.hibernate.SessionFactory;
 
@@ -22,6 +24,10 @@ public class NewClass {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         OvertimeControllerInterface oc = new OvertimeController(sessionFactory);
         EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
+        RoleControllerInterface rci= new RoleController(sessionFactory);
+        for (Object object : rci.getRoleJob("ADMIN SYSTEM")) {
+            System.out.println(object);
+        }
 //        
 //        System.out.println(oc.insert("OVT5", "2019-03-15", "2", "Doing Test", "TSH01", "STA01"));
         /**
@@ -32,6 +38,6 @@ public class NewClass {
          * System.out.println(overtime.getKeterangan());
          * System.out.println(overtime.getTimesheet().getId()); }
          */
-        System.out.println(ec.register("EMP04", "Pandu", "Jawa Timur", "1000000", "mpandugalang@gmail.com", "pandu", "DIV01", "SIT02", "EMP02"));
+//        System.out.println(ec.register("EMP04", "Pandu", "Jawa Timur", "1000000", "mpandugalang@gmail.com", "pandu", "DIV01", "SIT02", "EMP02"));
     }
 }

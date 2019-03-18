@@ -9,8 +9,7 @@ import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
 import controllers.OvertimeController;
 import controllers.OvertimeControllerInterface;
-import controllers.RoleController;
-import controllers.RoleControllerInterface;
+import java.text.SimpleDateFormat;
 import models.Overtime;
 import org.hibernate.SessionFactory;
 
@@ -19,15 +18,15 @@ import org.hibernate.SessionFactory;
  * @author Pandu
  */
 public class NewClass {
-    
+
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         OvertimeControllerInterface oc = new OvertimeController(sessionFactory);
         EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
-        RoleControllerInterface rci= new RoleController(sessionFactory);
-        for (Object object : rci.getRoleJob("ADMIN SYSTEM")) {
-            System.out.println(object);
-        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        System.out.println(oc.delete("OVT20"));
+        String x = "2019/02/19";
+        System.out.println(oc.update("OVT24", "","2", "TEST UPDATE","TSH8","STA02"));
 //        
 //        System.out.println(oc.insert("OVT5", "2019-03-15", "2", "Doing Test", "TSH01", "STA01"));
         /**

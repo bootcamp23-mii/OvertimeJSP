@@ -5,16 +5,12 @@
  */
 package controllers;
 
-import static com.mchange.v2.c3p0.impl.C3P0Defaults.password;
 import daos.DAOInterface;
 import daos.GeneralDAO;
-import java.math.BigInteger;
 import java.util.List;
 import models.Division;
 import models.Employee;
-import models.Job;
 import models.LoginSession;
-import models.Role;
 import models.Site;
 import org.hibernate.SessionFactory;
 import tools.BCrypt;

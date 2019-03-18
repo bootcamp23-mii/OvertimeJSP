@@ -6,7 +6,6 @@
 package models;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -41,10 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password")})
 public class Employee implements Serializable {
 
-    @Lob
-    @Column(name = "photo")
-    private byte[] photo;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -60,10 +55,9 @@ public class Employee implements Serializable {
     private String email;
     @Column(name = "password")
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<Role> roleList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<TimeSheet> timeSheetList;
+    @Lob
+    @Column(name = "photo")
+    private byte[] photo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager", fetch = FetchType.LAZY)
     private List<Employee> employeeList;
     @JoinColumn(name = "manager", referencedColumnName = "id")
@@ -75,6 +69,9 @@ public class Employee implements Serializable {
     @JoinColumn(name = "site", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Site site;
+    @JoinColumn(name = "job", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Job job;
 
     public Employee() {
     }
@@ -82,8 +79,8 @@ public class Employee implements Serializable {
     public Employee(String id) {
         this.id = id;
     }
-
-    public Employee(String id, String name, String address, Integer salary, String email, String pass, Division division, Site site, Employee idmanager) {
+    
+     public Employee(String id, String name, String address, Integer salary, String email, String pass, Division division, Site site, Employee idmanager) {
         this.id = id;
         this.name=name;
         this.address=address;
@@ -143,22 +140,12 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    @XmlTransient
-    public List<Role> getRoleList() {
-        return roleList;
+    public byte[] getPhoto() {
+        return photo;
     }
 
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
-    }
-
-    @XmlTransient
-    public List<TimeSheet> getTimeSheetList() {
-        return timeSheetList;
-    }
-
-    public void setTimeSheetList(List<TimeSheet> timeSheetList) {
-        this.timeSheetList = timeSheetList;
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     @XmlTransient
@@ -194,6 +181,14 @@ public class Employee implements Serializable {
         this.site = site;
     }
 
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -218,13 +213,5 @@ public class Employee implements Serializable {
     public String toString() {
         return "models.Employee[ id=" + id + " ]";
     }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
-
+    
 }

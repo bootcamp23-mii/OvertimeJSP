@@ -67,7 +67,7 @@ public class HistoryServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             if (action.equalsIgnoreCase("delete")) {
-                oc.delete(request.getParameter("id"));
+                oc.delete(request.getParameter("otId"));
             } else if (action.equalsIgnoreCase("update")) {
                 Overtime ot = oc.getById(request.getParameter("id"));
                 request.getSession().setAttribute("otId", ot.getId());
@@ -92,7 +92,11 @@ public class HistoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (oc.update(request.getParameter("otId"), request.getParameter("otDate"),
+                request.getParameter("otDuration"), request.getParameter("otDesc"),
+                request.getParameter("timesheet"), request.getParameter("otStatus")) != null) {
+            processRequest(request, response);
+        }
     }
 
     /**

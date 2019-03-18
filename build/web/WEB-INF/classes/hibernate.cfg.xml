@@ -54,7 +54,6 @@ Contributor(s):
         <mapping class="models.Employee"/>
         <mapping class="models.Job"/>
         <mapping class="models.Overtime"/>
-        <mapping class="models.Role"/>
         <mapping class="models.Site"/>
         <mapping class="models.Status"/>
         <mapping class="models.Task"/>

@@ -63,4 +63,5 @@
         <% session.removeAttribute("otStatus"); %>
         <% session.removeAttribute("timesheet"); %>
         <% session.removeAttribute("data"); %>
+        <% session.removeAttribute("role"); %>
 </html>

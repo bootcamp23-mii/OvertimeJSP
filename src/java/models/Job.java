@@ -41,7 +41,7 @@ public class Job implements Serializable {
     @Column(name = "position")
     private String position;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "job", fetch = FetchType.LAZY)
-    private List<Role> roleList;
+    private List<Employee> employeeList;
 
     public Job() {
     }
@@ -49,13 +49,6 @@ public class Job implements Serializable {
     public Job(String id) {
         this.id = id;
     }
-
-    public Job(String id, String name) {
-       this.id= id;
-       this.position=name;
-    }
-
-    
 
     public String getId() {
         return id;
@@ -74,12 +67,12 @@ public class Job implements Serializable {
     }
 
     @XmlTransient
-    public List<Role> getRoleList() {
-        return roleList;
+    public List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 
     @Override

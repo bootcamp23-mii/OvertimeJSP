@@ -23,12 +23,13 @@ import tools.HibernateUtil;
  *
  * @author Pandu
  */
-@WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
+@WebServlet(name = "OvertimeServlet", urlPatterns = {"/OvertimeServlet"})
 public class OvertimeServlet extends HttpServlet {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
     List<Overtime> data = null;
+    List<Overtime> totover = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,6 +60,10 @@ public class OvertimeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        totover = oc.totOver(request.getSession().getAttribute("login").toString());
+
+        request.getSession().setAttribute("totime", totover);
+        
         processRequest(request, response);
     }
 
@@ -74,8 +79,12 @@ public class OvertimeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (oc.insert("IDHERE", String.valueOf(request.getParameter("tf-date")), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), request.getParameter("tf-timesheet"), "STA01") != null) {
-            processRequest(request, response);
+        try {
+            if (oc.insert("ID", sdf.parse(request.getParameter("tf-date")), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), request.getParameter("tf-timesheet"), "STA01") != null) {
+                processRequest(request, response);
+            }
+        } catch (Exception ex) {
+
         }
     }
 

@@ -4,13 +4,15 @@
     Author     : Pandu
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="models.Overtime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
-    <%boolean cekData = session.getAttribute("history") != null;
+    <%  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        boolean cekData = session.getAttribute("history") != null;
         Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
         boolean cekList = session.getAttribute("history") != null;
         if (!cekList) {
@@ -60,7 +62,7 @@
                                             <tr>
                                                 <td><%= i++%></td>
                                                 <td><%= elem.getId()%></td>
-                                                <td><%= elem.getDate()%></td>
+                                                <td><%= sdf.format(elem.getDate())%></td>
                                                 <td><%= elem.getTimeduration()%></td>
                                                 <td><%= elem.getKeterangan()%></td>
                                                 <td><%= elem.getTimesheet().getId()%></td>

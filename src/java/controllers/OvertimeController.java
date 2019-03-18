@@ -9,6 +9,7 @@ import daos.DAOInterface;
 import daos.GeneralDAO;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,21 +32,17 @@ public class OvertimeController implements OvertimeControllerInterface {
     }
 
     @Override
-    public String insert(String id, String date, String timeDuration, String keterangan, String timeSheet, String status) {
-        try {
-            if (dao.saveOrDelete(new Overtime(id, sdf.parse(date), Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status)), true)) {
-                return " Selamat data berhasil disimpan";
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(OvertimeController.class.getName()).log(Level.SEVERE, null, ex);
+    public String insert(String id, Date date, String timeDuration, String keterangan, String timeSheet, String status) {
+        if (dao.saveOrDelete(new Overtime(id, date, Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status)), true)) {
+            return " Selamat data berhasil disimpan";
         }
         return "Maaf coba lagi";
     }
 
     @Override
-    public String update(String id, String date, String timeDuration, String keterangan, String timeSheet, String status) {
+    public String update(String id, Date date, String timeDuration, String keterangan, String timeSheet, String status) {
         try {
-            if (dao.saveOrDelete(new Overtime(id, sdf.parse(date), Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status)), true)) {
+            if (dao.saveOrDelete(new Overtime(id, date, Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status)), true)) {
                 return " Selamat data berhasil diubah";
             }
         } catch (Exception e) {
@@ -81,7 +78,7 @@ public class OvertimeController implements OvertimeControllerInterface {
     public List<Overtime> getAll() {
         return dao.getData("");
     }
-    
+
     @Override
     public List<Overtime> getByMang(String key) {
         return dao.getByMang(key);
@@ -96,6 +93,11 @@ public class OvertimeController implements OvertimeControllerInterface {
         return dao.empOvertime(id);
     }
     
+    @Override
+    public List<Overtime> totOver(String id) {
+        return dao.salCount(id);
+    }
+
     @Override
     public List<Overtime> history(String id) {
         return dao.history(id);

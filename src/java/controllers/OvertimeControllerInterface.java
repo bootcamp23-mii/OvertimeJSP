@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import java.util.Date;
 import java.util.List;
 import models.Overtime;
 
@@ -14,9 +15,9 @@ import models.Overtime;
  */
 public interface OvertimeControllerInterface {
 
-    public String insert(String id, String overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
+    public String insert(String id, Date overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
 
-    public String update(String id, String overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
+    public String update(String id, Date overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
 
     public String delete(String id);
 
@@ -29,6 +30,8 @@ public interface OvertimeControllerInterface {
     public List<Overtime> getByMang(String key);
 
     public List<Overtime> empOvertime(String id);
+
+    public List<Overtime> totOver(String id);
 
     public List<Overtime> history(String id);
 

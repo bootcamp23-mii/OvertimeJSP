@@ -67,14 +67,14 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         }
         return obj;
     }
-    
+
     @Override
     public List<T> getByMang(Object keyword) {
         List<T> obj = new ArrayList<>();
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = session.createQuery("FROM Overtime WHERE status = 'STA01' and timesheet in(from TimeSheet where employee in(from Employee where manager = '"+keyword+"'))").list();
+            obj = session.createQuery("FROM Overtime WHERE status = 'STA01' and timesheet in(from TimeSheet where employee in(from Employee where manager = '" + keyword + "'))").list();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
@@ -197,7 +197,23 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = session.createQuery("from Overtime where status = 'STA01' and timesheet in(from TimeSheet where employee = '"+keyword+"')").list();
+            obj = session.createQuery("from Overtime where status = 'STA01' and timesheet in(from TimeSheet where employee = '" + keyword + "')").list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
+
+    @Override
+    public List<T> salCount(Object keyword) {
+        List<T> obj = new ArrayList<>();
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')").list();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
@@ -213,7 +229,7 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = session.createQuery("from Overtime where status != 'STA01' and timesheet in(from TimeSheet where employee = '"+keyword+"')").list();
+            obj = session.createQuery("from Overtime where status != 'STA01' and timesheet in(from TimeSheet where employee = '" + keyword + "')").list();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {
@@ -222,6 +238,5 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         }
         return obj;
     }
-    
 
 }

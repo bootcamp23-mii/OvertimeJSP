@@ -25,12 +25,12 @@
                             <h3 class="title-2">PROFILE SECTION</h3>
                             <div class="chart-info">
                                 <div class="chart-info">
-                                    <label>NAMA ANDA</label>
+                                    <label>Your Name</label>
                                 </div>
                             </div>
                             <div class="chart-info">
                                 <div class="chart-info">
-                                    <label>NIK ANDA</label>
+                                    <label>Your ID</label>
                                 </div>
                             </div>
                         </div>

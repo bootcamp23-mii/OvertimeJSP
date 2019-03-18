@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.Division;
 import models.Employee;
 import models.TimeSheet;
 import org.hibernate.SessionFactory;

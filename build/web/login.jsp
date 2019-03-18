@@ -4,8 +4,10 @@
     Author     : Pandu
 --%>
 
+<%@page import="models.Overtime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <jsp:include page="head.jsp"/>
     <div class="page-wrapper">
@@ -29,20 +31,12 @@
                                     <input class="au-input au-input--full" type="password" name="passwordLogin" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
-                                    <!--                                    <label>
-                                                                            <input type="checkbox" name="remember">Remember Me
-                                                                        </label>-->
                                     <label>
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                                <!--                                <div class="social-login-content">
-                                                                    <div class="social-button">
-                                                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
-                                                                        <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
-                                                                    </div>
-                                                                </div>-->
+
                             </form>
                             <div class="register-link">
                                 <p>
@@ -64,4 +58,6 @@
         <% session.removeAttribute("timesheet"); %>
         <% session.removeAttribute("data"); %>
         <% session.removeAttribute("role"); %>
+        <% session.removeAttribute("history"); %>
+        <% session.removeAttribute("all");%>
 </html>

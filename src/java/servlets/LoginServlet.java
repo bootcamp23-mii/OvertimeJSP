@@ -27,6 +27,7 @@ import tools.HibernateUtil;
 public class LoginServlet extends HttpServlet {
 //    List<Role> role=null;
 //    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
+
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
 //    List<Employee> data = null;
 
@@ -43,8 +44,11 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+//            if (request.getSession().getAttribute("login") != null) {
+//                response.sendRedirect("index.jsp");
+//            } else {
             response.sendRedirect("login.jsp");
+//            }
         }
     }
 
@@ -61,7 +65,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
     }
 
     /**
@@ -78,11 +82,10 @@ public class LoginServlet extends HttpServlet {
         if (ec.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
             String data = request.getParameter("usernameLogin");
-            
+
 //            THIS MIGHT BE ROLE MANAGEMENT THAT FEMI USED TO GET LOGIN SESSION MANAGEMENT
 //            String role= ec.getById(data).getRoleList().get(0).getJob().getPosition();
 //            for (Employee employee : (List<Employee>) ec.getById(data)) {
-
             Employee employee = ec.getById(data);
             request.getSession().setAttribute("empid", employee.getId());
             request.getSession().setAttribute("empname", employee.getName());
@@ -92,7 +95,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("empdivision", employee.getDivision().getName());
             request.getSession().setAttribute("empsite", employee.getSite().getName());
             request.getSession().setAttribute("empmanager", employee.getManager().getName());
-            
+
 //            SIMPLE ROLE MANAGEMENT CC PANDUMALIK
             request.getSession().setAttribute("role", employee.getJob().getId());
             request.getSession().setAttribute("login", data);

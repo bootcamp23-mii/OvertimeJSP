@@ -10,6 +10,9 @@ import controllers.EmployeeControllerInterface;
 import controllers.OvertimeController;
 import controllers.OvertimeControllerInterface;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import models.Overtime;
 import org.hibernate.SessionFactory;
 
@@ -25,10 +28,28 @@ public class NewClass {
         EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //        System.out.println(oc.delete("OVT20"));
-        String x = "2019/02/19";
-        System.out.println(oc.update("OVT24", "","2", "TEST UPDATE","TSH8","STA02"));
+        String x = "2019/02/13";
+        Date dt = new Date();
+        
+//        oc.update("", dt,"dur","desc","timesheet","status");
+                
+        
+//        System.out.println(sdf.parse(x));
+//
+        System.out.println(oc.update("OVT24",dt , "2019", "TEST UPDATE", "TSH8", "STA02"));
+//        try {
+//            System.out.println(oc.insert("TOY", sdf.parse(x), "45", "NGANGGUR", "TSH01", "STA01"));
+//        } catch (Exception ex) {
+//        }
 //        
-//        System.out.println(oc.insert("OVT5", "2019-03-15", "2", "Doing Test", "TSH01", "STA01"));
+//        System.out.println(oc.insert("TOY", sdf.parse(x), "45", "NGANGGUR", "TSH01", "STA01"));
+//        
+        
+        
+//        System.out.println(dt);
+        //        System.out.println(sdf.format(dt));
+        //        
+        //        System.out.println(oc.update("OVT24", sdf.format(dt), "2233", "Doing Test", "TSH01", "STA01"));
         /**
          * for (Overtime overtime : oc.getAll()) {
          * System.out.println(overtime.getId());
@@ -37,6 +58,6 @@ public class NewClass {
          * System.out.println(overtime.getKeterangan());
          * System.out.println(overtime.getTimesheet().getId()); }
          */
-//        System.out.println(ec.register("EMP04", "Pandu", "Jawa Timur", "1000000", "mpandugalang@gmail.com", "pandu", "DIV01", "SIT02", "EMP02"));
+        //        System.out.println(ec.register("EMP04", "Pandu", "Jawa Timur", "1000000", "mpandugalang@gmail.com", "pandu", "DIV01", "SIT02", "EMP02"));
     }
 }

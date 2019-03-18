@@ -23,7 +23,7 @@ import tools.HibernateUtil;
  *
  * @author Pandu
  */
-@WebServlet(name = "AddOvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
+@WebServlet(name = "OvertimeServlet", urlPatterns = {"/AddOvertimeServlet"})
 public class OvertimeServlet extends HttpServlet {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

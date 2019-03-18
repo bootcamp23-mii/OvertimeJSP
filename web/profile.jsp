@@ -7,36 +7,49 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<div class="section__content section__content--p30">
+    <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">YOUR PROFILE HERE</h2>
+                        <h2 class="title-1">PROFILE</h2>
                     </div>
                 </div>
             </div>
             <div class="row m-t-25">
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="au-card recent-report">
-                        <div class="au-card-inner">
-                            <h3 class="title-2">PROFILE SECTION</h3>
-                            <div class="chart-info">
+            <form action="mail" method="post">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="au-card recent-report">
+                            <div class="au-card-inner">
                                 <div class="chart-info">
-                                    <label>NAMA ANDA</label>
+                                    <div class="chart-info">
+                                        <label class="label" >Nama Anda  :</label>
+                                        <label name="subject"><%= (session.getAttribute("empname") != null) ? session.getAttribute("empname") : ""%></label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="chart-info">
                                 <div class="chart-info">
-                                    <label>NIK ANDA</label>
+                                    <div class="chart-info">
+                                        <label class="label" >Email Anda :</label>
+                                        <label name="to"><%= (session.getAttribute("empemail") != null) ? session.getAttribute("empemail") : ""%></label> 
+                                    </div>
                                 </div>
+                                <div class="chart-info">
+                                    <label class="label">Apakah data diatas sudah benar?</label>
+                                </div>
+                                <div class="chart-info">
+                                    <input type="text" name="message"  placeholder="Your Message"/><br/>
+                                    <input type="text" name="user" placeholder="Your Email"><br/>
+                                    <input type="password" name="pass" placeholder="Password"/><br/>
+                                </div>
+                                <!--<button type="button" class="btn btn-success" value="send">Confirm Data</button>-->
+                                <input type="submit" class="btn-success" value="send" />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </html>

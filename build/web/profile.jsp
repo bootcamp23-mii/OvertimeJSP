@@ -25,6 +25,12 @@
                             <h3 class="title-2">PROFILE SECTION</h3>
                             <div class="chart-info">
                                 <div class="chart-info">
+                                    <label>NAMA ANDA</label>
+                                </div>
+                            </div>
+                            <div class="chart-info">
+                                <div class="chart-info">
+                                    <label>NIK ANDA</label>
                                 </div>
                             </div>
                         </div>

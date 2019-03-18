@@ -7,8 +7,11 @@ package servlets;
 
 import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
+import controllers.RoleController;
+import controllers.RoleControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Employee;
 import models.LoginSession;
+import models.Role;
 import org.hibernate.Session;
 import tools.HibernateUtil;
 
@@ -25,9 +29,10 @@ import tools.HibernateUtil;
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
-
+//    List<Role> role=null;
 //    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
+    RoleControllerInterface rci= new RoleController(HibernateUtil.getSessionFactory());
 //    List<Employee> data = null;
 
     /**
@@ -44,6 +49,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String x = String.valueOf(request.getSession().getAttribute("login"));            
             response.sendRedirect("login.jsp");
         }
     }
@@ -61,6 +67,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**

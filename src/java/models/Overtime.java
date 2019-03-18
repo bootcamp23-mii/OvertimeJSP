@@ -65,10 +65,6 @@ public class Overtime implements Serializable {
     public Overtime() {
     }
 
-    public Overtime(String id) {
-        this.id = id;
-    }
-
     public Overtime(String id, Date date, Integer timeduration, String keterangan, TimeSheet timesheet, Status status) {
         this.id = id;
         this.date = date;
@@ -76,6 +72,10 @@ public class Overtime implements Serializable {
         this.keterangan = keterangan;
         this.timesheet = timesheet;
         this.status = status;
+    }
+
+    public Overtime(String ids) {
+        this.id = ids;
     }
 
     public String getId() {

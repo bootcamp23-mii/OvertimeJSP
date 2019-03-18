@@ -7,8 +7,6 @@ package servlets;
 
 import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
-import controllers.RoleController;
-import controllers.RoleControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -19,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Employee;
 import models.LoginSession;
-import models.Role;
-import org.hibernate.Session;
 import tools.HibernateUtil;
 
 /**
@@ -32,7 +28,6 @@ public class LoginServlet extends HttpServlet {
 //    List<Role> role=null;
 //    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
-    RoleControllerInterface rci= new RoleController(HibernateUtil.getSessionFactory());
 //    List<Employee> data = null;
 
     /**
@@ -48,8 +43,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String x = String.valueOf(request.getSession().getAttribute("login"));            
+
             response.sendRedirect("login.jsp");
         }
     }
@@ -84,7 +78,9 @@ public class LoginServlet extends HttpServlet {
         if (ec.login(request.getParameter("usernameLogin"), request.getParameter("passwordLogin"))) {
             LoginSession.setIdUsername(request.getParameter("usernameLogin"));
             String data = request.getParameter("usernameLogin");
-            String role= ec.getById(data).getRoleList().get(0).getJob().getPosition();
+            
+//            THIS MIGHT BE ROLE MANAGEMENT THAT FEMI USED TO GET LOGIN SESSION MANAGEMENT
+//            String role= ec.getById(data).getRoleList().get(0).getJob().getPosition();
 //            for (Employee employee : (List<Employee>) ec.getById(data)) {
 
             Employee employee = ec.getById(data);
@@ -96,15 +92,13 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("empdivision", employee.getDivision().getName());
             request.getSession().setAttribute("empsite", employee.getSite().getName());
             request.getSession().setAttribute("empmanager", employee.getManager().getName());
-            request.getSession().setAttribute("role", role);
             
-            
-//            }
+//            SIMPLE ROLE MANAGEMENT CC PANDUMALIK
+            request.getSession().setAttribute("role", employee.getJob().getId());
             request.getSession().setAttribute("login", data);
             response.sendRedirect("index.jsp");
         } else {
             processRequest(request, response);
-//            response.sendRedirect("index.jsp");
         }
     }
 

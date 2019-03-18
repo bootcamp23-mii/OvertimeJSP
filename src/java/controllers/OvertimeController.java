@@ -7,10 +7,8 @@ package controllers;
 
 import daos.DAOInterface;
 import daos.GeneralDAO;
-import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,14 +56,11 @@ public class OvertimeController implements OvertimeControllerInterface {
 
     @Override
     public String delete(String id) {
-        try {
-            if (dao.saveOrDelete(new Overtime(id), false)) {
-                return " Data telah dihapus!";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (dao.saveOrDelete(new Overtime(id), false)) {
+            return " Data telah dihapus!";
+        } else {
+            return "Maaf coba lagi";
         }
-        return "Maaf coba lagi";
     }
 
     @Override

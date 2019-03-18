@@ -41,7 +41,7 @@
                     </li>
                     <li>
                         <a href="#" id="nav_review" >
-                            <i class="fas fa-file-signature"></i>Review</a>
+                            <i class="fas fa-calendar-check"></i>Review</a>
                     </li>
                     <li class="has-sub">
                         <a class="js-arrow" href="#">
@@ -53,7 +53,7 @@
                             </li>
                             <li>
                                 <a href="#" id="nav_status">
-                                <i class="fas fa-exclamation"></i>Status</a>
+                                    <i class="fas fa-exclamation"></i>Status</a>
                             </li>
                         </ul>
                     </li>

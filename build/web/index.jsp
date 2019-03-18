@@ -5,6 +5,7 @@
     Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
     boolean cekList = session.getAttribute("data") != null;
     boolean cekLog = session.getAttribute("login") != null;
+    boolean cekRole = session.getAttribute("role") != null;
     if (!cekLog) {
         response.sendRedirect("./LoginServlet");
     } else if (!cekList) {
@@ -37,19 +38,15 @@
             <!-- END HEADER MOBILE-->
 
             <!-- MENU SIDEBAR-->
-            <% //if (request.getParameter("role").equals("TEAM MEMBER")) {%>
-            
+            <%if (cekRole) {
+                    if (session.getAttribute("role").equals("JOB03")) {%>
+            <jsp:include page="sidebarAdmin.jsp"/>
+            <% } else if (session.getAttribute("role").equals("JOB02")) {%>
+            <jsp:include page="sidebarManager.jsp"/>
+            <%} else {%>
             <jsp:include page="sidebar.jsp"/>
-            
-            <% //} else if (request.getParameter("role").equals("TEAM MANAGER")) {%>
-            
-           <%-- <jsp:include page="sidebarManager.jsp"/>
-            
-            <% //} else { %>
-            
-            <%<jsp:include page="sidebarAdmin.jsp"/>--%>
-            
-            <% // } %>
+            <% }%>
+            <% }%>
             <!-- END MENU SIDEBAR-->
 
             <!-- PAGE CONTAINER-->

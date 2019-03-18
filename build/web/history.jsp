@@ -10,15 +10,15 @@
 <!DOCTYPE html>
 <html>
 
-    <%boolean cekData = session.getAttribute("data") != null;
+    <%boolean cekData = session.getAttribute("history") != null;
         Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
-        boolean cekList = session.getAttribute("data") != null;
+        boolean cekList = session.getAttribute("history") != null;
         if (!cekList) {
             response.sendRedirect("./HistoryServlet");
         }
     %>
 
-    
+
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
@@ -51,13 +51,12 @@
                                                 <th>Keterangan</th>
                                                 <th>Time Sheet</th>
                                                 <th>Status</th>
-                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <% int i = 1;
                                                 if (cekList) {
-                                                    for (Overtime elem : (List<Overtime>) session.getAttribute("data")) {%>
+                                                    for (Overtime elem : (List<Overtime>) session.getAttribute("history")) {%>
                                             <tr>
                                                 <td><%= i++%></td>
                                                 <td><%= elem.getId()%></td>
@@ -66,25 +65,10 @@
                                                 <td><%= elem.getKeterangan()%></td>
                                                 <td><%= elem.getTimesheet().getId()%></td>
                                                 <td><%= elem.getStatus().getStatus()%></td>
-                                                <td>
-                                                    <% if (!elem.getStatus().getId().equals("STA02")) {%>
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOvertime" 
-                                                            data-getid="<%= elem.getId()%>" 
-                                                            data-getdate="<%= elem.getDate()%>" 
-                                                            data-getduration="<%= elem.getTimeduration()%>" 
-                                                            data-getdescription="<%= elem.getKeterangan()%>" 
-                                                            data-getts="<%= elem.getTimesheet().getId()%>"
-                                                            data-getstatus="<%= elem.getStatus().getStatus()%>" 
-                                                            >EDIT</button>
-                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>">DELETE</button>
-                                                    <%} else {%>
-                                                    <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
-                                                    <%}%>
-                                                </td>
                                             </tr>
                                             <%}
                                                 } else {
-                                                response.sendRedirect("./HistoryServlet");
+                                                    response.sendRedirect("./HistoryServlet");
                                                 }%>
                                         </tbody>
                                     </table>
@@ -96,24 +80,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $('#modalOvertime').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var id = button.data('getid')
-            var date = button.data('getdate')
-            var duration = button.data('getduration')
-            var desc = button.data('getdescription')
-            var ts = button.data('getts')
-            var status = button.data('getstatus')
-
-            var modal = $(this)
-            modal.find('#otId').val(id)
-            modal.find('#otdate').val(date)
-            modal.find('#otduration').val(duration)
-            modal.find('#otdesc').val(desc)
-            modal.find('#timesheet').val(ts)
-            modal.find('#otstatus').val(status)
-        })
-    </script>
-
 </html>

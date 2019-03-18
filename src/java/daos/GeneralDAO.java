@@ -197,7 +197,23 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = session.createQuery("from Overtime where timesheet in(from TimeSheet where employee = '"+keyword+"')").list();
+            obj = session.createQuery("from Overtime where status = 'STA01' and timesheet in(from TimeSheet where employee = '"+keyword+"')").list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
+
+    @Override
+    public List<T> history(Object keyword) {
+        List<T> obj = new ArrayList<>();
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = session.createQuery("from Overtime where status != 'STA01' and timesheet in(from TimeSheet where employee = '"+keyword+"')").list();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {

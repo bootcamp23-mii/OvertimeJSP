@@ -49,7 +49,7 @@ public class HistoryServlet extends HttpServlet {
             
             data    = oc.empOvertime(x);
             all     = oc.getByMang(x);
-            history = oc.empOvertime(x);
+            history = oc.history(x);
 
             request.getSession().setAttribute("history", history);
             request.getSession().setAttribute("data", data);

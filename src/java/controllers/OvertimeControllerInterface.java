@@ -30,6 +30,8 @@ public interface OvertimeControllerInterface {
 
     public List<Overtime> empOvertime(String id);
 
+    public List<Overtime> history(String id);
+
     public Overtime last();
 
     public Overtime first();

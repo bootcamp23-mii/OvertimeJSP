@@ -95,5 +95,10 @@ public class OvertimeController implements OvertimeControllerInterface {
     public List<Overtime> empOvertime(String id) {
         return dao.empOvertime(id);
     }
+    
+    @Override
+    public List<Overtime> history(String id) {
+        return dao.history(id);
+    }
 
 }

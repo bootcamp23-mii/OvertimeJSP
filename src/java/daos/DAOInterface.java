@@ -20,4 +20,5 @@ public interface DAOInterface<T> {
     public T last(Object keyword);
     public T first(Object keyword);
     public List<T> empOvertime(Object keyword);
+    public List<T> history(Object keyword);
 }

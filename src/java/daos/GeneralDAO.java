@@ -9,8 +9,6 @@ package daos;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -61,6 +59,22 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         transaction = session.beginTransaction();
         try {
             obj = session.createQuery(getQuery(keyword + "")).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return obj;
+    }
+    
+    @Override
+    public List<T> getByMang(Object keyword) {
+        List<T> obj = new ArrayList<>();
+        session = this.factory.openSession();
+        transaction = session.beginTransaction();
+        try {
+            obj = session.createQuery("FROM Overtime WHERE status = 'STA01' and timesheet in(from TimeSheet where employee in(from Employee where manager = '"+keyword+"'))").list();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {

@@ -24,10 +24,6 @@
                             <i class="fas fa-home"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="#" id="nav_all">
-                            <i class="fas fa-chart-bar"></i>All Record</a>
-                    </li>
-                    <li>
                         <a href="#" id="nav_add">
                             <i class="fas fa-plus-square"></i>Add Request</a>
                     </li>

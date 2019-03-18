@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="tf-timesheet" name="tf-timesheet" placeholder="Time Sheet" class="form-control"/>
-                                        <span class="help-block"><%= out.print("ddd") %></span>
+                                        <span class="help-block">SELECT TIMESHEET</span>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm">

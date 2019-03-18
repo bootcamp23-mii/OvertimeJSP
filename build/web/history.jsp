@@ -18,50 +18,7 @@
         }
     %>
 
-    <form action="HistoryServlet" method="POST">
-        <div class="modal fade" id="modalOvertime" tabindex="-1" 
-             role="dialog" aria-labeledby="myModalHeader" aris-hidden="true">
-            <div class="modal-dialog" role="document" >
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h3 class="modal-title">EDITOR</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="md-form mb-2">
-                            <label data-error="wrong" data-success="true" class="">ID</label>
-                            <input type="text" id="otId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
-                        </div>
-                        <div class="md-form mb-2">
-                            <label data-error="wrong" data-success="true" class="">Date</label>
-                            <input type="date" id="otdate" class="form-control" value=<%= (session.getAttribute("otDate") != null) ? session.getAttribute("otDate") : ""%>>
-                        </div>
-                        <div class="md-form mb-2">
-                            <label data-error="wrong" data-success="true" class="">Duration</label>
-                            <input type="text" id="otduration" class="form-control" value=<%= (session.getAttribute("otDuration") != null) ? session.getAttribute("otDuration") : ""%>>
-                        </div>
-                        <div class="md-form mb-2">
-                            <label data-error="wrong" data-success="true" class="">Description</label>
-                            <input type="text" id="otdesc" class="form-control" value=<%= (session.getAttribute("otDesc") != null) ? session.getAttribute("otDesc") : ""%>>
-                        </div>
-                        <div class="md-form mb-2">
-                            <label data-error="wrong" data-success="true" class="">Time Sheet</label>
-                            <input type="text" id="timesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
-                        </div>
-                        <div class="md-form mb-2">
-                            <label data-error="wrong" data-success="true" class="">Status</label>
-                            <input type="text" id="otstatus" class="form-control" value=<%= (session.getAttribute("otStatus") != null) ? session.getAttribute("otStatus") : ""%>>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" value="Save" name="save" >SAVE</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+    
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">

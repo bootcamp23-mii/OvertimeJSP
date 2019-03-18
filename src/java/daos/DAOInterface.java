@@ -14,6 +14,7 @@ import java.util.List;
 public interface DAOInterface<T> {
     public boolean saveOrDelete(T entity, boolean isSave);
     public List<T> getData(Object keyword);
+    public List<T> getByMang(Object keyword);
     public T getById(Object id);
     public List<T> login(Object username);
     public T last(Object keyword);

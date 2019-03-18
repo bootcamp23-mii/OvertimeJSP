@@ -5,7 +5,10 @@
  */
 $(function () {
     $("#nav_home").on("click", function () {
-        $("#loadthis").load("default.jsp");
+        $("#loadthis").load("content.jsp");
+    });
+    $("#nav_review").on("click", function () {
+        $("#loadthis").load("approvalManager.jsp");
     });
     $("#nav_all").on("click", function () {
         $("#loadthis").load("content.jsp");

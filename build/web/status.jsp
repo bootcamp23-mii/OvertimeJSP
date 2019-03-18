@@ -118,8 +118,8 @@
                                                             data-getdescription="<%= elem.getKeterangan()%>" 
                                                             data-getts="<%= elem.getTimesheet().getId()%>"
                                                             data-getstatus="<%= elem.getStatus().getStatus()%>" 
-                                                            >EDIT</button>
-                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>">DELETE</button>
+                                                            ><i class="fas fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-trash"></i></button>
                                                     <%} else {%>
                                                     <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
                                                     <%}%>

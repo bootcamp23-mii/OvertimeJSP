@@ -4,11 +4,12 @@
 <%  boolean cekData = session.getAttribute("data") != null;
     Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
     boolean cekList = session.getAttribute("data") != null;
+    boolean cekList2 = session.getAttribute("all") != null;
     boolean cekLog = session.getAttribute("login") != null;
     boolean cekRole = session.getAttribute("role") != null;
     if (!cekLog) {
         response.sendRedirect("./LoginServlet");
-    } else if (!cekList) {
+    } else if (!cekList || !cekList2) {
         response.sendRedirect("./HistoryServlet");
     }
 %>
@@ -56,7 +57,7 @@
                 <!-- HEADER DESKTOP-->
                 <!-- MAIN CONTENT-->
                 <div class="main-content" id="loadthis">
-                    <jsp:include page="default.jsp"/>
+                    <jsp:include page="content.jsp"/>
                 </div>
                 <!-- END MAIN CONTENT-->
                 <!-- END PAGE CONTAINER-->

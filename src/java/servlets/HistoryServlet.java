@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Overtime;
-import org.hibernate.Session;
 import tools.HibernateUtil;
 
 /**
@@ -28,6 +27,8 @@ public class HistoryServlet extends HttpServlet {
 
     OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
     List<Overtime> data = null;
+    List<Overtime> all = null;
+    List<Overtime> history = null;
 //    List<Overtime> dato = null;
 
     /**
@@ -45,8 +46,14 @@ public class HistoryServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String x = String.valueOf(request.getSession().getAttribute("login"));
-            data = oc.empOvertime(x);
+            
+            data    = oc.empOvertime(x);
+            all     = oc.getByMang(x);
+            history = oc.empOvertime(x);
+
+            request.getSession().setAttribute("history", history);
             request.getSession().setAttribute("data", data);
+            request.getSession().setAttribute("all", all);
 
             response.sendRedirect("index.jsp");
         }
@@ -71,10 +78,10 @@ public class HistoryServlet extends HttpServlet {
             } else if (action.equalsIgnoreCase("update")) {
                 Overtime ot = oc.getById(request.getParameter("id"));
                 request.getSession().setAttribute("otId", ot.getId());
-                request.getSession().setAttribute("otDate", ot.getDate());
-                request.getSession().setAttribute("otDuration", ot.getTimeduration());
-                request.getSession().setAttribute("otDesc", ot.getKeterangan());
-                request.getSession().setAttribute("otStatus", ot.getStatus().getStatus());
+                request.getSession().setAttribute("otdate", ot.getDate());
+                request.getSession().setAttribute("otduration", ot.getTimeduration());
+                request.getSession().setAttribute("otdesc", ot.getKeterangan());
+                request.getSession().setAttribute("otstatus", ot.getStatus().getStatus());
                 request.getSession().setAttribute("timesheet", ot.getTimesheet().getId());
             }
         }
@@ -92,9 +99,9 @@ public class HistoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (oc.update(request.getParameter("otId"), request.getParameter("otDate"),
-                request.getParameter("otDuration"), request.getParameter("otDesc"),
-                request.getParameter("timesheet"), request.getParameter("otStatus")) != null) {
+        if (oc.update(request.getParameter("otId"), request.getParameter("otdate"),
+                request.getParameter("otduration"), request.getParameter("otdesc"),
+                request.getParameter("timesheet"), request.getParameter("otstatus")) != null) {
             processRequest(request, response);
         }
     }

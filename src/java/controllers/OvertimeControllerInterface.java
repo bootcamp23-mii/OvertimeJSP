@@ -25,10 +25,12 @@ public interface OvertimeControllerInterface {
     public List<Overtime> getData(String key);
 
     public List<Overtime> getAll();
-    
+
+    public List<Overtime> getByMang(String key);
+
     public List<Overtime> empOvertime(String id);
-            
+
     public Overtime last();
-    
+
     public Overtime first();
 }

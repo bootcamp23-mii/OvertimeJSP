@@ -50,10 +50,6 @@
                             <label data-error="wrong" data-success="true" class="">Time Sheet</label>
                             <input type="text" id="Stimesheet" name="Stimesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
                         </div>
-                        <!--                        <div class="md-form mb-2">
-                                                    <label data-error="wrong" data-success="true" class="">Status</label>
-                                                    <input type="text" id="Sotstatus" class="form-control" value=<--%= // (session.getAttribute("otStatus") != null) ? session.getAttribute("otStatus") : ""%>>
-                                                </div>-->
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" type="submit" value="Save" name="save" >SAVE CHANGE</button>
@@ -76,14 +72,14 @@
                     </div>
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            <h3 class="title-10" > Status</h3>
-                            <div class="row m-t-25">
-                            </div>
                             <div class="col-lg-12">
+                                <h3 class="title-10" > Status</h3>
+                                <div class="row m-t-25">
+                                </div>
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->
 
-                                    <table id="historyTable" class="table table-borderless table-striped table-earning" cellspacing='30' align ='center'>
+                                    <table id="statusTable" class="table table-borderless table-striped table-earning" cellspacing='30' align ='center'>
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
@@ -118,7 +114,7 @@
                                                             data-getts="<%= elem.getTimesheet().getId()%>"
                                                             data-getstatus="<%= elem.getStatus().getStatus()%>" 
                                                             ><i class="fas fa-edit"></i></button>
-                                                    <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-danger" href="StatusServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-trash"></i></button>
                                                         <%} else {%>
                                                     <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
                                                     <%}%>
@@ -126,10 +122,17 @@
                                             </tr>
                                             <%}
                                                 } else {
-                                                    response.sendRedirect("./HistoryServlet");
+                                                    response.sendRedirect("./StatusServlet");
                                                 }%>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="row m-t-25">
+                                </div>
+
+                                <div class="chart-note">
+                                    <button class="btnstatus au-btn au-btn-icon au-btn--blue">
+                                        <i class="zmdi"></i>PRINT</button>
                                 </div>
                             </div>
                         </div>
@@ -155,6 +158,16 @@
             modal.find('#Sotdesc').val(desc)
             modal.find('#Stimesheet').val(ts)
             modal.find('#Sotstatus').val(status)
+        })
+
+        $('.btnstatus').click(function () {
+            var printme = document.getElementById('statusTable');
+            var wme = window.open("", "", "width=900,height=700");
+            wme.document.write(printme.outerHTML);
+            wme.document.close();
+            wme.focus();
+            wme.print();
+            wme.close();
         })
     </script>
 

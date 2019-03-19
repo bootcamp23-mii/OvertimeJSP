@@ -25,55 +25,84 @@
                             <div class="row m-t-25">
                             </div>
                             <div class="col-lg-12">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing">Name</span>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Name</label>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Address</span>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">What' Your Name?</span>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Salary</span>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Address</label>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">E-mail</span>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">Where Are You From?</span>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Division</span>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Salary</label>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Site</span>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">How much  Salary You have got?</span>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Manager</span>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Email</label>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Job</span>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">Your Email?</span>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm">Save</button>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Division</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">Your Division?</span>
+                                    </div>
+                                </div>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Site</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">Your Site?</span>
+                                    </div>
+                                </div>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Manager Id</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">Who is Your manager?</span>
+                                    </div>
+                                </div>
+                                 <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-description" class=" form-control-label">Position</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="tf-description" name="tf-description" placeholder="" class="form-control" />
+                                        <span class="help-block">What's Your Position?</span>
+                                    </div>
+                                </div>
+                                <button type="submitEmp" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                </button>
+                                <button type="resetEmp" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Reset
+                                </button>
                             </div>
                         </div>
                     </div>

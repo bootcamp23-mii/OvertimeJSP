@@ -33,7 +33,7 @@
                     </li>
                     <li>
                         <a href="#" id="nav_user_access">
-                            <i class="fas fa-user-secret"></i>User Access</a>
+                            <i class="fas           fa-user-secret"></i>User Access</a>
                     </li>
                     <li>
                         <a href="#" id="nav_add">

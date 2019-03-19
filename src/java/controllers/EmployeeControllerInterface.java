@@ -28,8 +28,6 @@ public interface EmployeeControllerInterface {
 
     public Employee getById(String id);
 
-    public Employee last();
-
     public boolean login(String username, String Password);
 
 }

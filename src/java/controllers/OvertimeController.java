@@ -29,7 +29,7 @@ public class OvertimeController implements OvertimeControllerInterface {
     }
 
     @Override
-    public String insert(String id, Date date, String timeDuration, String keterangan, String timeSheet, String status, byte[] signature ) {
+    public String insert(String id, Date date, String timeDuration, String keterangan, String timeSheet, String status, byte[] signature) {
         if (dao.saveOrDelete(new Overtime(id, date, Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status), signature), true)) {
             return " Selamat data berhasil disimpan";
         }
@@ -67,10 +67,6 @@ public class OvertimeController implements OvertimeControllerInterface {
         return dao.getData(key);
     }
 
-    public Overtime first() {
-        return dao.last("");
-    }
-
     @Override
     public List<Overtime> getAll() {
         return dao.getData("");
@@ -81,17 +77,13 @@ public class OvertimeController implements OvertimeControllerInterface {
         return dao.getByMang(key);
     }
 
-    public Overtime last() {
-        return dao.last("");
-    }
-
     @Override
     public List<Overtime> empOvertime(String id) {
         return dao.empOvertime(id);
     }
 
     @Override
-    public List<Overtime> totOver(String id) {
+    public Overtime totOver(String id) {
         return dao.salCount(id);
     }
 

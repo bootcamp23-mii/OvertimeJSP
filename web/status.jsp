@@ -18,7 +18,7 @@
         }
     %>
 
-    <form action="HistoryServlet" method="POST">
+    <form action="StatusServlet" method="POST">
         <div class="modal fade" id="modalStatus" tabindex="-1" 
              role="dialog" aria-labeledby="myModalHeader" aris-hidden="true">
             <div class="modal-dialog" role="document" >
@@ -32,23 +32,23 @@
                     <div class="modal-body">
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">ID</label>
-                            <input type="text" id="SotId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
+                            <input type="text" id="SotId" name="SotId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Date</label>
-                            <input type="date" id="Sotdate" class="form-control" value=<%= (session.getAttribute("otDate") != null) ? session.getAttribute("otDate") : ""%>>
+                            <input type="date" id="Sotdate" name="Sotdate" class="form-control" value=<%= (session.getAttribute("otDate") != null) ? session.getAttribute("otDate") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Duration</label>
-                            <input type="text" id="Sotduration" class="form-control" value=<%= (session.getAttribute("otDuration") != null) ? session.getAttribute("otDuration") : ""%>>
+                            <input type="text" id="Sotduration" name="Sotduration" class="form-control" value=<%= (session.getAttribute("otDuration") != null) ? session.getAttribute("otDuration") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Description</label>
-                            <input type="text" id="Sotdesc" class="form-control" value=<%= (session.getAttribute("otDesc") != null) ? session.getAttribute("otDesc") : ""%>>
+                            <input type="text" id="Sotdesc" name="Sotdesc" class="form-control" value=<%= (session.getAttribute("otDesc") != null) ? session.getAttribute("otDesc") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Time Sheet</label>
-                            <input type="text" id="Stimesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
+                            <input type="text" id="Stimesheet" name="Stimesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
                         </div>
                         <!--                        <div class="md-form mb-2">
                                                     <label data-error="wrong" data-success="true" class="">Status</label>
@@ -56,7 +56,7 @@
                                                 </div>-->
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" value="Save" name="save" >SAVE</button>
+                        <button class="btn btn-primary" type="submit" value="Save" name="save" >SAVE CHANGE</button>
                     </div>
                 </div>
             </div>

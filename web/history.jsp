@@ -36,10 +36,10 @@
                     </div>
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            <h3 class="title-10" > History</h3>
-                            <div class="row m-t-25">
-                            </div>
                             <div class="col-lg-12">
+                                <h3 class="title-10" > History</h3>
+                                <div class="row m-t-25">
+                                </div>
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->
                                     <table id="historyTable" class="table table-borderless table-striped table-earning" cellspacing='30' align ='center'>
@@ -72,12 +72,31 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="row m-t-25">
+                                </div>
+
+                                <div class="chart-note">
+                                    <button class="btnhistory au-btn au-btn-icon au-btn--blue">
+                                        <i class="zmdi"></i>PRINT</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        $('.btnhistory').click(function () {
+            var printme = document.getElementById('historyTable');
+            var wme = window.open("", "", "width=900,height=700");
+            wme.document.write(printme.outerHTML);
+            wme.document.close();
+            wme.focus();
+            wme.print();
+            wme.close();
+        })
+    </script>
 </html>

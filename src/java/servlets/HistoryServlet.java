@@ -26,7 +26,7 @@ import tools.HibernateUtil;
  */
 @WebServlet(name = "HistoryServlet", urlPatterns = {"/HistoryServlet"})
 public class HistoryServlet extends HttpServlet {
-
+    
     OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     List<Overtime> data = null;
@@ -49,17 +49,17 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            
             String x = String.valueOf(request.getSession().getAttribute("login"));
-
+            
             data = oc.empOvertime(x);
             all = oc.getByMang(x);
             history = oc.history(x);
-
+            
             request.getSession().setAttribute("history", history);
             request.getSession().setAttribute("data", data);
             request.getSession().setAttribute("all", all);
-
+            
             response.sendRedirect("index.jsp");
         }
     }
@@ -110,6 +110,7 @@ public class HistoryServlet extends HttpServlet {
                     String.valueOf(request.getParameter("otduration")), request.getParameter("otdesc"),
                     request.getParameter("timesheet"), request.getParameter("otstatus")) != null) {
                 processRequest(request, response);
+                response.sendRedirect("index.jsp");
             }
         } catch (Exception ex) {
         }

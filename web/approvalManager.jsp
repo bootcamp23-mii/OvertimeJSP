@@ -18,8 +18,8 @@
         }
     %>
 
-    <form action="HistoryServlet" method="POST">
-        <div class="modal fade" id="modalOvertime" tabindex="-1" 
+    <form action="ApprovalServlet" method="POST">
+        <div class="modal fade" id="modalApproval" tabindex="-1" 
              role="dialog" aria-labeledby="myModalHeader" aris-hidden="true">
             <div class="modal-dialog" role="document" >
                 <div class="modal-content">
@@ -32,31 +32,31 @@
                     <div class="modal-body">
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">ID</label>
-                            <input type="text" id="otId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
+                            <input type="text" id="AotId" name="AotId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Date</label>
-                            <input type="date" id="otdate" class="form-control" value=<%= (session.getAttribute("otDate") != null) ? session.getAttribute("otDate") : ""%>>
+                            <input type="date" id="Aotdate" name="Aotdate" class="form-control" value=<%= (session.getAttribute("otDate") != null) ? session.getAttribute("otDate") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Duration</label>
-                            <input type="text" id="otduration" class="form-control" value=<%= (session.getAttribute("otDuration") != null) ? session.getAttribute("otDuration") : ""%>>
+                            <input type="text" id="Aotduration" name="Aotduration" class="form-control" value=<%= (session.getAttribute("otDuration") != null) ? session.getAttribute("otDuration") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Description</label>
-                            <input type="text" id="otdesc" class="form-control" value=<%= (session.getAttribute("otDesc") != null) ? session.getAttribute("otDesc") : ""%>>
+                            <input type="text" id="Aotdesc" name="Aotdesc" class="form-control" value=<%= (session.getAttribute("otDesc") != null) ? session.getAttribute("otDesc") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Time Sheet</label>
-                            <input type="text" id="timesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
+                            <input type="text" id="Atimesheet" name="Atimesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Status</label>
-                            <input type="text" id="otstatus" class="form-control" value="STA02">
+                            <input type="text" id="Aotstatus" class="form-control" value="STA02">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" value="Save" name="save" >SAVE</button>
+                        <button class="btn btn-primary" type="submit" value="Save" name="save" >ACCEPT OVERTIME</button>
                     </div>
                 </div>
             </div>
@@ -110,13 +110,13 @@
                                                 <!--<td><--%= // elem.getStatus().getStatus()%></td>-->
                                                 <td>
                                                     <% if (elem.getStatus().getId().equals("STA01")) {%>
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOvertime" 
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalApproval" 
                                                             data-getid="<%= elem.getId()%>" 
                                                             data-getdate="<%= elem.getDate()%>" 
                                                             data-getduration="<%= elem.getTimeduration()%>" 
                                                             data-getdescription="<%= elem.getKeterangan()%>" 
                                                             data-getts="<%= elem.getTimesheet().getId()%>"
-                                                            data-getstatus="<%= elem.getStatus().getStatus()%>" 
+                                                            data-getstatus="<%= elem.getStatus().getId()%>" 
                                                             ><i class="fas fa-check-circle"></i></button>
                                                     <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-trash"></i></button>
                                                         <%} else {%>
@@ -139,7 +139,7 @@
         </div>
     </div>
     <script>
-        $('#modalOvertime').on('show.bs.modal', function (event) {
+        $('#modalApproval').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var id = button.data('getid')
             var date = button.data('getdate')
@@ -149,12 +149,12 @@
             var status = button.data('getstatus')
 
             var modal = $(this)
-            modal.find('#otId').val(id)
-            modal.find('#otdate').val(date)
-            modal.find('#otduration').val(duration)
-            modal.find('#otdesc').val(desc)
-            modal.find('#timesheet').val(ts)
-            modal.find('#otstatus').val(status)
+            modal.find('#AotId').val(id)
+            modal.find('#Aotdate').val(date)
+            modal.find('#Aotduration').val(duration)
+            modal.find('#Aotdesc').val(desc)
+            modal.find('#Atimesheet').val(ts)
+            modal.find('#Aotstatus').val(status)
         })
     </script>
 

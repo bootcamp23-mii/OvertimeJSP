@@ -98,7 +98,8 @@ public class OvertimeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        File file = new File(request.getParameter("tf-signature"));
+        String pathFile = request.getParameter("tf-signature");
+        File file = new File(pathFile);
 
         byte[] b = new byte[(int) file.length()];
         try {

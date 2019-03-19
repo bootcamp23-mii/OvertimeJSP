@@ -18,6 +18,8 @@ public interface EmployeeControllerInterface {
 
     public String register(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager);
 
+    public String register2(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager, String job);
+    
     public String delete(String id);
 
     public String updateJob(String id, String nama, String job);

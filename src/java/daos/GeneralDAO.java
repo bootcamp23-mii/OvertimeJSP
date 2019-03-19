@@ -180,7 +180,7 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = (T) session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')");
+            obj = (T) session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')").uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {

@@ -36,7 +36,8 @@ public class NewClass {
 //
 //        System.out.println(oc.update("OVT24",dt , "2019", "TEST UPDATE", "TSH8", "STA02"));
 //        try {
-        System.out.println(oc.totOver("EMP5").getTimeduration());
+//        System.out.println(oc.totOver("EMP01"));
+//        System.out.println(oc.totOver("EMP1"));
 //        System.out.println(oc.update("OVT19", dt, "2", "NGANTUK NGGA SIH", "TSH7", "STA02"));
 //        System.out.println(oc.totOver("EMP01"));
 //            System.out.println(oc.insert("TOY", sdf.parse(x), "45", "NGANGGUR", "TSH01", "STA01"));

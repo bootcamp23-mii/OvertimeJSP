@@ -7,6 +7,8 @@ package servlets;
 
 import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
+import controllers.JobController;
+import controllers.JobControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -26,7 +28,7 @@ import tools.HibernateUtil;
 @WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
 public class AdminServlet extends HttpServlet {
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
-    
+    JobControllerInterface jc= new JobController(HibernateUtil.getSessionFactory());
     List<Employee> dataEmp = null;
     List<Job> dataJob = null;
 
@@ -44,6 +46,8 @@ public class AdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             dataEmp = ec.getAll();
+            dataJob =jc.getAll();
+            request.getSession().setAttribute("dataJob", dataJob);
             request.getSession().setAttribute("dataEmp", dataEmp);
             response.sendRedirect("index.jsp");
 //            for (Employee employee : dataEmp) {
@@ -71,9 +75,9 @@ public class AdminServlet extends HttpServlet {
         if (action != null) {
             if (action.equalsIgnoreCase("update")) {
                 Employee employee= ec.getById(request.getParameter("id"));
-                request.getSession().setAttribute("empId", employee.getId());
-                request.getSession().setAttribute("empName", employee.getName());
-                request.getSession().setAttribute("empJob", employee.getJob().getPosition());
+                request.getSession().setAttribute("empIdAccess", employee.getId());
+                request.getSession().setAttribute("empNameAccess", employee.getName());
+                request.getSession().setAttribute("empJobAccess", employee.getJob().getPosition());
             }
         }
         processRequest(request, response);
@@ -90,7 +94,7 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (ec.updateJob(request.getParameter("empId"), request.getParameter("empName"), request.getParameter("empJob"))!=null){
+        if (ec.updateJob(request.getParameter("empIdAccess"), request.getParameter("empNameAccess"), request.getParameter("empJobAccess"))!=null){
             processRequest(request, response);
         }
     }

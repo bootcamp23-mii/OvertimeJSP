@@ -5,12 +5,15 @@
     Overtime ov = (cekData) ? (Overtime) session.getAttribute("overtime") : null;
     boolean cekList = session.getAttribute("data") != null;
     boolean cekList2 = session.getAttribute("all") != null;
+    boolean cekList3 = session.getAttribute("dataEmp") != null;
     boolean cekLog = session.getAttribute("login") != null;
     boolean cekRole = session.getAttribute("role") != null;
     if (!cekLog) {
         response.sendRedirect("./LoginServlet");
     } else if (!cekList || !cekList2) {
         response.sendRedirect("./HistoryServlet");
+    } else if (!cekList3) {
+        response.sendRedirect("./AdminServlet");
     }
 %>
 <html lang="en">
@@ -56,7 +59,7 @@
                 <jsp:include page="header.jsp"/>
                 <!-- HEADER DESKTOP-->
                 <!-- MAIN CONTENT-->
-                <div class="main-content" id="loadthis">
+                <div class="main-content-p" id="loadthis">
                     <jsp:include page="content.jsp"/>
                 </div>
                 <!-- END MAIN CONTENT-->

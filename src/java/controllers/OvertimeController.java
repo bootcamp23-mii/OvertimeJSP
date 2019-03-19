@@ -7,12 +7,9 @@ package controllers;
 
 import daos.DAOInterface;
 import daos.GeneralDAO;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.Overtime;
 import models.Status;
 import models.TimeSheet;
@@ -92,7 +89,7 @@ public class OvertimeController implements OvertimeControllerInterface {
     public List<Overtime> empOvertime(String id) {
         return dao.empOvertime(id);
     }
-    
+
     @Override
     public List<Overtime> totOver(String id) {
         return dao.salCount(id);

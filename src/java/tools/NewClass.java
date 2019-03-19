@@ -36,8 +36,10 @@ public class NewClass {
         
 //        System.out.println(sdf.parse(x));
 //
-        System.out.println(oc.update("OVT24",dt , "2019", "TEST UPDATE", "TSH8", "STA02"));
+//        System.out.println(oc.update("OVT24",dt , "2019", "TEST UPDATE", "TSH8", "STA02"));
 //        try {
+
+        System.out.println(oc.totOver("EMP01"));
 //            System.out.println(oc.insert("TOY", sdf.parse(x), "45", "NGANGGUR", "TSH01", "STA01"));
 //        } catch (Exception ex) {
 //        }

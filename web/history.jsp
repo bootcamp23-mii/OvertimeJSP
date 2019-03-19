@@ -47,10 +47,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>Id</th>
                                                 <th>Date</th>
-                                                <th>Duration</th>
-                                                <th>Keterangan</th>
+                                                <!--<th>Duration</th>-->
                                                 <th>Time Sheet</th>
                                                 <th>Status</th>
                                             </tr>
@@ -61,10 +59,10 @@
                                                     for (Overtime elem : (List<Overtime>) session.getAttribute("history")) {%>
                                             <tr>
                                                 <td><%= i++%></td>
-                                                <td><%= elem.getId()%></td>
+                                                <!--<td><--%= // elem.getId()%></td>-->
                                                 <td><%= sdf.format(elem.getDate())%></td>
-                                                <td><%= elem.getTimeduration()%></td>
-                                                <td><%= elem.getKeterangan()%></td>
+                                                <!--<td><--%= // elem.getTimeduration()%></td>-->
+                                                <!--<td><--%= // elem.getKeterangan()%></td>-->
                                                 <td><%= elem.getTimesheet().getId()%></td>
                                                 <td><%= elem.getStatus().getStatus()%></td>
                                             </tr>

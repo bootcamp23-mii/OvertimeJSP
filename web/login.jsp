@@ -7,7 +7,12 @@
 <%@page import="models.Overtime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%
+    boolean cekLog = session.getAttribute("login") != null;
+    if (cekLog) {
+        response.sendRedirect("/OvertimeJSP/index.jsp");
+    }
+%>
 <html>
     <jsp:include page="head.jsp"/>
     <div class="page-wrapper">
@@ -49,15 +54,4 @@
                 </div>
             </div>
         </div>
-        <% session.removeAttribute("login"); %>
-        <% session.removeAttribute("otId"); %>
-        <% session.removeAttribute("otDate"); %>
-        <% session.removeAttribute("otDuration"); %>
-        <% session.removeAttribute("otDesc"); %>
-        <% session.removeAttribute("otStatus"); %>
-        <% session.removeAttribute("timesheet"); %>
-        <% session.removeAttribute("data"); %>
-        <% session.removeAttribute("role"); %>
-        <% session.removeAttribute("history"); %>
-        <% session.removeAttribute("all");%>
 </html>

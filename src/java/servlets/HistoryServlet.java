@@ -106,16 +106,13 @@ public class HistoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        String xy = String.valueOf(sdf.parse(request.getParameter("otdate")));
-
         try {
             if (oc.update(request.getParameter("otId"), sdf.parse(newd),
                     String.valueOf(request.getParameter("otduration")), request.getParameter("otdesc"),
                     request.getParameter("timesheet"), request.getParameter("otstatus")) != null) {
                 processRequest(request, response);
-
             }
         } catch (Exception ex) {
-
         }
     }
 

@@ -3,17 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/web/login.jsp</file>
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/web/sidebar.jsp</file>
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/web/index.jsp</file>
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/src/java/servlets/LoginServlet.java</file>
-=======
             <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/index.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/sidebarAdmin.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/daos/GeneralDAO.java</file>
             <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/header.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/logout.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/history.jsp</file>
             <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/servlets/LoginServlet.java</file>
->>>>>>> 96713a9990a467ddbe8e236b181f5f5522dfa9c9
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/tools/NewClass.java</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/servlets/HistoryServlet.java</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/controllers/OvertimeController.java</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/login.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/profile.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/content.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/sidebar.jsp</file>
         </group>
     </open-files>
 </project-private>

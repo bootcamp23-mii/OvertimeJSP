@@ -11,9 +11,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="overview-wrap">
-                        <h2 class="title-1">REQUEST FORM SHOULD BE HERE</h2>
-                    </div>
                 </div>
             </div>
             <div class="row m-t-25">
@@ -24,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            <h3 class="title-2">REQUEST FORM</h3>
+                            <h3 class="title-10" >REQUEST FORM</h3>
                             <div class="row m-t-25">
                             </div>
                             <form action="OvertimeServlet" method="POST" class="form-horizontal">

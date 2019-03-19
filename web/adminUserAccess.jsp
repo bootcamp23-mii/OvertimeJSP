@@ -21,10 +21,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="overview-wrap">
-                        <h2 class="title-1">User Access</h2>
-                    </div>
                 </div>
+            </div>
+            <div class="row m-t-25">
             </div>
 <!--            <div class="row m-t-25">
             </div>-->
@@ -32,7 +31,9 @@
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-
+                            <h3 class="title-10" >User Access</h3>
+                            <div class="row m-t-25">
+                            </div>
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->

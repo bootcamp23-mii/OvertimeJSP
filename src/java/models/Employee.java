@@ -92,6 +92,13 @@ public class Employee implements Serializable {
         this.manager=idmanager;        
     }
 
+    public Employee(String id, String name, Job job) {
+        this.id = id;
+        this.name = name;
+        this.job = job;
+    }
+    
+
     public String getId() {
         return id;
     }

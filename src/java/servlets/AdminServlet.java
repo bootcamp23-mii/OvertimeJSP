@@ -16,17 +16,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Employee;
+import models.Job;
 import tools.HibernateUtil;
 
 /**
  *
- * @author Pandu
+ * @author milhamafemi
  */
-@WebServlet(name = "EmployeeDetail", urlPatterns = {"/EmployeeDetail"})
-public class EmployeeDetail extends HttpServlet {
-
+@WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
+public class AdminServlet extends HttpServlet {
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
-    List<Employee> allEmp = null;
+    
+    List<Employee> dataEmp = null;
+    List<Job> dataJob = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,8 +43,15 @@ public class EmployeeDetail extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            dataEmp = ec.getAll();
+            request.getSession().setAttribute("dataEmp", dataEmp);
             response.sendRedirect("index.jsp");
-            /* TODO output your page here. You may use following sample code. */
+//            for (Employee employee : dataEmp) {
+//                request.getSession().setAttribute("idEmpList", employee.getId());
+//                request.getSession().setAttribute("nameEmpList", employee.getName());
+//                request.getSession().setAttribute("jobEmpList", employee.getJob());
+//            }
+
         }
     }
 
@@ -58,16 +67,15 @@ public class EmployeeDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Employee employee = ec.getById(request.getParameter("login"));
-        request.getSession().setAttribute("empid", employee.getId());
-        request.getSession().setAttribute("empname", employee.getName());
-        request.getSession().setAttribute("empaddress", employee.getAddress());
-        request.getSession().setAttribute("empsalary", employee.getSalary());
-        request.getSession().setAttribute("empemail", employee.getEmail());
-        request.getSession().setAttribute("empdivision", employee.getDivision().getName());
-        request.getSession().setAttribute("empsite", employee.getSite().getName());
-        request.getSession().setAttribute("empmanager", employee.getManager().getName());
+        String action = request.getParameter("action");
+        if (action != null) {
+            if (action.equalsIgnoreCase("update")) {
+                Employee employee= ec.getById(request.getParameter("id"));
+                request.getSession().setAttribute("empId", employee.getId());
+                request.getSession().setAttribute("empName", employee.getName());
+                request.getSession().setAttribute("empJob", employee.getJob().getPosition());
+            }
+        }
         processRequest(request, response);
     }
 
@@ -82,7 +90,9 @@ public class EmployeeDetail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (ec.updateJob(request.getParameter("empId"), request.getParameter("empName"), request.getParameter("empJob"))!=null){
+            processRequest(request, response);
+        }
     }
 
     /**

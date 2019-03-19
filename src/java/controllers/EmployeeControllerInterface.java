@@ -20,6 +20,8 @@ public interface EmployeeControllerInterface {
 
     public String delete(String id);
 
+    public String updateJob(String id, String nama, String job);
+
     public List<Employee> getAll();
 
     public List<Employee> getData(String keyword);

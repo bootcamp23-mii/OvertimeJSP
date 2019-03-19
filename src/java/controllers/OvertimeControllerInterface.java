@@ -15,9 +15,9 @@ import models.Overtime;
  */
 public interface OvertimeControllerInterface {
 
-    public String insert(String id, Date overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
+    public String insert(String id, Date overtimeDate, String timeDuration, String keterangan, String timeSheet, String status, byte[] signature);
 
-    public String update(String id, Date overtimeDate, String timeDuration, String keterangan, String status, String timeSheet);
+    public String update(String id, Date overtimeDate, String timeDuration, String keterangan, String timeSheet, String status);
 
     public String delete(String id);
 

@@ -62,7 +62,7 @@
             </div>
         </div>
     </form>
-                        
+
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
@@ -78,7 +78,7 @@
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            
+
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->
@@ -87,12 +87,12 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>Id</th>
+                                                <!--<th>Id</th>-->
                                                 <th>Date</th>
                                                 <th>Duration</th>
-                                                <th>Keterangan</th>
-                                                <th>Time Sheet</th>
-                                                <th>Status</th>
+                                                <!--<th>Keterangan</th>-->
+                                                <!--<th>Time Sheet</th>-->
+                                                <!--<th>Status</th>-->
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -102,12 +102,12 @@
                                                     for (Overtime elem : (List<Overtime>) session.getAttribute("all")) {%>
                                             <tr>
                                                 <td><%= i++%></td>
-                                                <td><%= elem.getId()%></td>
+                                                <!--<td><--%= // elem.getId()%></td>-->
                                                 <td><%= elem.getDate()%></td>
                                                 <td><%= elem.getTimeduration()%></td>
-                                                <td><%= elem.getKeterangan()%></td>
-                                                <td><%= elem.getTimesheet().getId()%></td>
-                                                <td><%= elem.getStatus().getStatus()%></td>
+                                                <!--<td><--%= // elem.getKeterangan()%></td>-->
+                                                <!--<td><--%= // elem.getTimesheet().getId()%></td>-->
+                                                <!--<td><--%= // elem.getStatus().getStatus()%></td>-->
                                                 <td>
                                                     <% if (elem.getStatus().getId().equals("STA01")) {%>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOvertime" 
@@ -119,7 +119,7 @@
                                                             data-getstatus="<%= elem.getStatus().getStatus()%>" 
                                                             ><i class="fas fa-check-circle"></i></button>
                                                     <button type="button" class="btn btn-danger" href="HistoryServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-trash"></i></button>
-                                                    <%} else {%>
+                                                        <%} else {%>
                                                     <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
                                                     <%}%>
                                                 </td>

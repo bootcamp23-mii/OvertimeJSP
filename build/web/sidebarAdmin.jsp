@@ -28,8 +28,16 @@
                             <i class="fas fa-chart-bar"></i>All Record</a>
                     </li>
                     <li>
+                        <a href="#" id="nav_add_emp">
+                            <i class="fas fa-user-plus"></i>Create User</a>
+                    </li>
+                    <li>
+                        <a href="#" id="nav_user_access">
+                            <i class="fas fa-user-secret"></i>User Access</a>
+                    </li>
+                    <li>
                         <a href="#" id="nav_add">
-                            <i class="fas fa-plus-square"></i>User Access</a>
+                            <i class="fas fa-plus-square"></i>Add Request</a>
                     </li>
                     <!--                    <li>
                                             <a href="#" id="nav_calender">

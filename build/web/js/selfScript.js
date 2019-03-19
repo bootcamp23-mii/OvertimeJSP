@@ -28,5 +28,11 @@ $(function () {
     $("#nav_status").on("click", function () {
         $("#loadthis").load("status.jsp");
     });
+    $("#nav_add_emp").on("click", function () {
+        $("#loadthis").load("adminCreateUser.jsp");
+    });
+    $("#nav_user_access").on("click", function () {
+        $("#loadthis").load("adminUserAccess.jsp");
+    });
 });
 

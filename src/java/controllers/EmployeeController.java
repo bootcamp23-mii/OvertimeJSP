@@ -10,6 +10,7 @@ import daos.GeneralDAO;
 import java.util.List;
 import models.Division;
 import models.Employee;
+import models.Job;
 import models.LoginSession;
 import models.Site;
 import org.hibernate.SessionFactory;
@@ -39,6 +40,14 @@ public class EmployeeController implements EmployeeControllerInterface {
     @Override
     public String insertOrUpdate(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager) {
         if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, password, new Division(division), new Site(site), new Employee(idManager)), true)) {
+            return "Selamat Data berhasil simpan";
+        }
+        return "Maaf Data gagal disimpan";
+    }
+
+    @Override
+    public String updateJob(String id, String nama, String job) {
+        if (dao.saveOrDelete(new Employee(id, nama, new Job(job)), true)) {
             return "Selamat Data berhasil simpan";
         }
         return "Maaf Data gagal disimpan";
@@ -85,6 +94,5 @@ public class EmployeeController implements EmployeeControllerInterface {
         System.out.println("List kosong");
         return false;
     }
-    
-    
+
 }

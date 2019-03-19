@@ -12,7 +12,7 @@
         response.sendRedirect("./LoginServlet");
     } else if (!cekList || !cekList2) {
         response.sendRedirect("./HistoryServlet");
-    } else if (!cekList3){
+    } else if (!cekList3) {
         response.sendRedirect("./AdminServlet");
     }
 %>
@@ -59,7 +59,7 @@
                 <jsp:include page="header.jsp"/>
                 <!-- HEADER DESKTOP-->
                 <!-- MAIN CONTENT-->
-                <div class="main-content" id="loadthis">
+                <div class="main-content-p" id="loadthis">
                     <jsp:include page="content.jsp"/>
                 </div>
                 <!-- END MAIN CONTENT-->

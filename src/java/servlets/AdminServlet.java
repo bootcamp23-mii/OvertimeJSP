@@ -7,6 +7,8 @@ package servlets;
 
 import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
+import controllers.JobController;
+import controllers.JobControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -26,7 +28,7 @@ import tools.HibernateUtil;
 @WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
 public class AdminServlet extends HttpServlet {
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
-    
+    JobControllerInterface jc= new JobController(HibernateUtil.getSessionFactory());
     List<Employee> dataEmp = null;
     List<Job> dataJob = null;
 
@@ -44,6 +46,8 @@ public class AdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             dataEmp = ec.getAll();
+            dataJob =jc.getAll();
+            request.getSession().setAttribute("dataJob", dataJob);
             request.getSession().setAttribute("dataEmp", dataEmp);
             response.sendRedirect("index.jsp");
 //            for (Employee employee : dataEmp) {

@@ -26,8 +26,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row m-t-25">
-            </div>
+<!--            <div class="row m-t-25">
+            </div>-->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
@@ -36,7 +36,6 @@
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->
-
                                     <table id="userAccessTable" class="table table-borderless table-striped table-earning" cellspacing='30' align ='center'>
                                         <thead>
                                             <tr>

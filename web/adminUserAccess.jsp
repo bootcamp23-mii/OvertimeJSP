@@ -11,13 +11,13 @@
 <!DOCTYPE html>
 <html>
     <%boolean cekData = session.getAttribute("dataEmp") != null;
-        Employee emp = (cekData) ? (Employee) session.getAttribute("empId") : null;
+        Employee emp = (cekData) ? (Employee) session.getAttribute("empIdAccess") : null;
         boolean cekList = session.getAttribute("dataEmp") != null;
         if (!cekList) {
             response.sendRedirect("./AdminServlet");
         }
     %>
-     <div class="section__content section__content--p30">
+    <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -32,7 +32,7 @@
                 <div class="col-lg-12">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            
+
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <!--TABLE HERE-->

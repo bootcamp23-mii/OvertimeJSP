@@ -7,9 +7,10 @@ package servlets;
 
 import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
+import controllers.OvertimeController;
+import controllers.OvertimeControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +29,8 @@ public class LoginServlet extends HttpServlet {
 //    List<Role> role=null;
 //    EmployeeControllerInterface eci = new EmployeeController(tools.HibernateUtil.getSessionFactory());
 
+    OvertimeControllerInterface oc = new OvertimeController(HibernateUtil.getSessionFactory());
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
-//    List<Employee> data = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,11 +45,8 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-//            if (request.getSession().getAttribute("login") != null) {
-//                response.sendRedirect("index.jsp");
-//            } else {
+
             response.sendRedirect("login.jsp");
-//            }
         }
     }
 
@@ -98,6 +96,12 @@ public class LoginServlet extends HttpServlet {
 
 //            SIMPLE ROLE MANAGEMENT CC PANDUMALIK
             request.getSession().setAttribute("role", employee.getJob().getId());
+
+            
+            String getTheEmp = request.getParameter("usernameLogin");
+            Long xy = oc.totOver(getTheEmp);
+            request.getSession().setAttribute("totime", xy);
+            
             request.getSession().setAttribute("login", data);
             response.sendRedirect("index.jsp");
         } else {

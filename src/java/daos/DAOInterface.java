@@ -25,7 +25,7 @@ public interface DAOInterface<T> {
 
     public List<T> empOvertime(Object keyword);
 
-    public T salCount(Object keyword);
+    public Long salCount(Object keyword);
 
     public List<T> history(Object keyword);
 }

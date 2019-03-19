@@ -27,38 +27,11 @@ public class NewClass {
         OvertimeControllerInterface oc = new OvertimeController(sessionFactory);
         EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        System.out.println(oc.delete("OVT20"));
+
         String x = "2019/02/13";
         Date dt = new Date();
-
-//        oc.update("", dt,"dur","desc","timesheet","status");
-//        System.out.println(sdf.parse(x));
-//
-//        System.out.println(oc.update("OVT24",dt , "2019", "TEST UPDATE", "TSH8", "STA02"));
-//        try {
-//        System.out.println(oc.totOver("EMP01"));
-//        System.out.println(oc.totOver("EMP1"));
+//        System.out.println(oc.getById("EMP5"));
+        System.out.println(oc.totOver("EMP01"));
 //        System.out.println(oc.update("OVT19", dt, "2", "NGANTUK NGGA SIH", "TSH7", "STA02"));
-//        System.out.println(oc.totOver("EMP01"));
-//            System.out.println(oc.insert("TOY", sdf.parse(x), "45", "NGANGGUR", "TSH01", "STA01"));
-//        } catch (Exception ex) {
-//        }
-//        
-//        System.out.println(oc.insert("TOY", sdf.parse(x), "45", "NGANGGUR", "TSH01", "STA01"));
-//        
-
-//        System.out.println(dt);
-        //        System.out.println(sdf.format(dt));
-        //        
-        //        System.out.println(oc.update("OVT24", sdf.format(dt), "2233", "Doing Test", "TSH01", "STA01"));
-        /**
-         * for (Overtime overtime : oc.getAll()) {
-         * System.out.println(overtime.getId());
-         * System.out.println(overtime.getDate());
-         * System.out.println(overtime.getStatus().getId());
-         * System.out.println(overtime.getKeterangan());
-         * System.out.println(overtime.getTimesheet().getId()); }
-         */
-        //        System.out.println(ec.register("EMP04", "Pandu", "Jawa Timur", "1000000", "mpandugalang@gmail.com", "pandu", "DIV01", "SIT02", "EMP02"));
     }
 }

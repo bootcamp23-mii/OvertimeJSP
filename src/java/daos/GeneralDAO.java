@@ -174,19 +174,22 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         return obj;
     }
 
+//    GANTI LONG / INT
     @Override
-    public T salCount(Object keyword) {
-        T obj = null;
+    public Long salCount(Object keyword) {
+//        String obj = null;
         session = this.factory.openSession();
         transaction = session.beginTransaction();
-        try {
-            obj = (T) session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')").uniqueResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
+//        try {
+
+        Long obj = (Long) session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')").uniqueResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//        }
+//        return obj;
         return obj;
     }
 

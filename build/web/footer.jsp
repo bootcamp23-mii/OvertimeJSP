@@ -7,6 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <div class="row m-t-45">
+    </div>
+    <div class="row m-t-45">
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="copyright">

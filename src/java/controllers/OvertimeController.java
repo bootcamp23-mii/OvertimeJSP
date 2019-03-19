@@ -84,10 +84,8 @@ public class OvertimeController implements OvertimeControllerInterface {
 
     @Override
     public Long totOver(String id) {
-        Overtime to = dao.salCount(id);
-        System.out.println(to);
-        Long lol = Long.valueOf(2);
-        return lol;
+        Long to = dao.salCount(id);
+        return to;
     }
 
     @Override

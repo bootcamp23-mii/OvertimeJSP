@@ -68,7 +68,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">ALL HISTORY</h2>
+
+                        <div class="row m-t-45">
+                        </div>
+                        <!--<h2 class="title-1">ALL HISTORY</h2>-->
                     </div>
                 </div>
             </div>

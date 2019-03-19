@@ -5,25 +5,41 @@
  */
 package servlets;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import controllers.OvertimeController;
 import controllers.OvertimeControllerInterface;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.Overtime;
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import tools.DBConnection;
 import tools.HibernateUtil;
 
 /**
  *
  * @author Pandu
  */
-
 @WebServlet(name = "OvertimeServlet", urlPatterns = {"/OvertimeServlet"})
 
 public class OvertimeServlet extends HttpServlet {
@@ -65,7 +81,7 @@ public class OvertimeServlet extends HttpServlet {
         totover = oc.totOver(request.getSession().getAttribute("login").toString());
 
         request.getSession().setAttribute("totime", totover);
-        
+
         processRequest(request, response);
     }
 
@@ -81,8 +97,26 @@ public class OvertimeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        File file = new File(request.getParameter("tf-signature"));
+
+        byte[] b = new byte[(int) file.length()];
         try {
-            if (oc.insert("ID", sdf.parse(request.getParameter("tf-date")), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), request.getParameter("tf-timesheet"), "STA01") != null) {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(b);
+            for (int i = 0; i < b.length; i++) {
+                System.out.print((char) b[i]);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found.");
+            e.printStackTrace();
+        } catch (IOException e1) {
+            System.out.println("Error Reading The File.");
+            e1.printStackTrace();
+        }
+
+        try {
+            if (oc.insert("ID", sdf.parse(request.getParameter("tf-date")), String.valueOf(request.getParameter("tf-duration")), request.getParameter("tf-description"), request.getParameter("tf-timesheet"), "STA01", b) != null) {
                 processRequest(request, response);
             }
         } catch (Exception ex) {

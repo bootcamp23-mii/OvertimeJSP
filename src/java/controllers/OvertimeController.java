@@ -29,8 +29,8 @@ public class OvertimeController implements OvertimeControllerInterface {
     }
 
     @Override
-    public String insert(String id, Date date, String timeDuration, String keterangan, String timeSheet, String status) {
-        if (dao.saveOrDelete(new Overtime(id, date, Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status)), true)) {
+    public String insert(String id, Date date, String timeDuration, String keterangan, String timeSheet, String status, byte[] signature ) {
+        if (dao.saveOrDelete(new Overtime(id, date, Integer.valueOf(timeDuration), keterangan, new TimeSheet(timeSheet), new Status(status), signature), true)) {
             return " Selamat data berhasil disimpan";
         }
         return "Maaf coba lagi";

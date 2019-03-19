@@ -43,7 +43,7 @@
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
                                 <div class="icon">
-                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                    <i class="zmdi "></i>
                                 </div>
                                 <div class="text">
                                     <h2><%= (session.getAttribute("totime") != null) ? session.getAttribute("totime") : ""%> Hours</h2>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="overview-chart">
-                                <canvas id="widgetChart2"></canvas>
+                                <!--<canvas id="widgetChart2"></canvas>-->
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="overview-chart">
-                                <canvas id="widgetChart3"></canvas>
+                                <!--<canvas id="widgetChart3"></canvas>-->
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="overview-chart">
-                                <canvas id="widgetChart4"></canvas>
+                                <!--<canvas id="widgetChart4"></canvas>-->
                             </div>
                         </div>
                     </div>
@@ -97,16 +97,20 @@
                 <div class="col-lg-6">
                     <div class="au-card recent-report">
                         <div class="au-card-inner">
-                            <h3 class="title-2">Reports</h3>
+                            <h3 class="title-2">Print Reports</h3>
+
+                            <div class="row m-t-25">
+                            </div>
+
                             <div class="chart-info">
                                 <div class="chart-info__left">
                                     <div class="chart-note">
-                                        <span class="dot dot--blue"></span>
-                                        <span>--PRINT--</span>
+                                        <button class="au-btn au-btn-icon au-btn--blue">
+                                            <i class="zmdi"></i>History</button>
                                     </div>
-                                    <div class="chart-note mr-0">
-                                        <span class="dot dot--green"></span>
-                                        <span>services</span>
+                                    <div class="chart-note">
+                                        <button class="au-btn au-btn-icon au-btn--blue">
+                                            <i class="zmdi"></i>Status</button>
                                     </div>
                                 </div>
                             </div>

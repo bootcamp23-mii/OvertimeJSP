@@ -67,6 +67,15 @@
                                         <span class="help-block">SELECT TIMESHEET</span>
                                     </div>
                                 </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="tf-timesheet" class=" form-control-label">Active Time Sheet</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="file" id="tf-signature" name="tf-signature" placeholder="PIC Signatur" class="form-control"/>
+                                        <span class="help-block">SELECT SIGNATURE</span>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-sm">
                                     <i class="fa fa-dot-circle-o"></i> Submit
                                 </button>

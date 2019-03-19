@@ -6,7 +6,6 @@
 package models;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -16,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -40,6 +40,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Overtime.findByTimeduration", query = "SELECT o FROM Overtime o WHERE o.timeduration = :timeduration")
     , @NamedQuery(name = "Overtime.findByKeterangan", query = "SELECT o FROM Overtime o WHERE o.keterangan = :keterangan")})
 public class Overtime implements Serializable {
+
+    @Lob
+    @Column(name = "signature")
+    private byte[] signature;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -72,6 +76,16 @@ public class Overtime implements Serializable {
         this.keterangan = keterangan;
         this.timesheet = timesheet;
         this.status = status;
+    }
+    
+    public Overtime(String id, Date date, Integer timeduration, String keterangan, TimeSheet timesheet, Status status, byte[] signature) {
+        this.id = id;
+        this.date = date;
+        this.timeduration = timeduration;
+        this.keterangan = keterangan;
+        this.timesheet = timesheet;
+        this.status = status;
+        this.signature=signature;
     }
 
     public Overtime(String ids) {
@@ -158,6 +172,14 @@ public class Overtime implements Serializable {
     @Override
     public String toString() {
         return "models.Overtime[ id=" + id + " ]";
+    }
+
+    public byte[] getSignature() {
+        return signature;
+    }
+
+    public void setSignature(byte[] signature) {
+        this.signature = signature;
     }
 
 }

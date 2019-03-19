@@ -78,8 +78,8 @@ public class OvertimeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        totover = oc.totOver(request.getSession().getAttribute("login").toString());
 
+        Overtime tover = oc.totOver(request.getSession().getAttribute("login").toString());
         request.getSession().setAttribute("totime", totover);
 
         processRequest(request, response);

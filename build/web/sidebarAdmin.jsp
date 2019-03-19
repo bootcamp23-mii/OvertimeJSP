@@ -33,20 +33,12 @@
                     </li>
                     <li>
                         <a href="#" id="nav_user_access">
-                            <i class="fas fa-user-secret"></i>User Access</a>
+                            <i class="fas           fa-user-secret"></i>User Access</a>
                     </li>
                     <li>
                         <a href="#" id="nav_add">
                             <i class="fas fa-plus-square"></i>Add Request</a>
                     </li>
-                    <!--                    <li>
-                                            <a href="#" id="nav_calender">
-                                                <i class="fas fa-calendar-alt"></i>Calendar</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" id="nav_profile" >
-                                                <i class="fas fa-user-circle"></i>Profile</a>
-                                        </li>-->
                     <li class="has-sub">
                         <a class="js-arrow" href="#">
                             <i class="fas fa-history"></i>View</a>

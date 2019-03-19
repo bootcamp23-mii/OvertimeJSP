@@ -143,39 +143,6 @@ public class GeneralDAO<T> implements DAOInterface<T> {
         return obj;
     }
 
-    public T last(Object keyword) {
-        T obj = null;
-        session = this.factory.openSession();
-        transaction = session.beginTransaction();
-        try {
-            obj = (T) session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE id = ( select max(id) from " + t.getClass().getSimpleName() + ")").uniqueResult();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-
-        return obj;
-    }
-
-    public T first(Object keyword) {
-        T obj = null;
-        session = this.factory.openSession();
-        transaction = session.beginTransaction();
-        try {
-            obj = (T) session.createQuery("FROM " + t.getClass().getSimpleName() + " WHERE ROWID = ( select min(ROWID) from " + t.getClass().getSimpleName() + ")").uniqueResult();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-        return obj;
-    }
-
     public List<T> getByKarByMang(Object id) {
         List<T> obj = new ArrayList<>();
         session = this.factory.openSession();
@@ -208,12 +175,12 @@ public class GeneralDAO<T> implements DAOInterface<T> {
     }
 
     @Override
-    public List<T> salCount(Object keyword) {
-        List<T> obj = new ArrayList<>();
+    public T salCount(Object keyword) {
+        T obj = null;
         session = this.factory.openSession();
         transaction = session.beginTransaction();
         try {
-            obj = session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')").list();
+            obj = (T) session.createQuery("select sum(timeduration) from Overtime where status = 'STA02' and timesheet in(from TimeSheet where employee ='" + keyword + "')");
         } catch (Exception e) {
             e.printStackTrace();
             if (transaction != null) {

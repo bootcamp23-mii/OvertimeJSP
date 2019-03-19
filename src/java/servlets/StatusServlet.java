@@ -76,9 +76,9 @@ public class StatusServlet extends HttpServlet {
         processRequest(request, response);
 
         try {
-            if (oc.update(request.getParameter("SotId"), sdf.parse(newd),
-                    String.valueOf(request.getParameter("Sotduration")), request.getParameter("Sotdesc"),
-                    request.getParameter("Stimesheet"), request.getParameter("Sotstatus")) != null) {
+            if (oc.update(
+                    request.getParameter("SotId"), sdf.parse(newd), String.valueOf(request.getParameter("Sotduration")), 
+                    request.getParameter("Sotdesc"), request.getParameter("Stimesheet"), request.getParameter("Sotstatus")) != null) {
                 processRequest(request, response);
             }
         } catch (Exception ex) {

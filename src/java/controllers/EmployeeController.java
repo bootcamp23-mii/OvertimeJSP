@@ -76,10 +76,6 @@ public class EmployeeController implements EmployeeControllerInterface {
         return dao.getById(id);
     }
 
-    public Employee last() {
-        return dao.last("");
-    }
-
     @Override
     public boolean login(String username, String password) {
         List<Employee> list = dao.login(username);

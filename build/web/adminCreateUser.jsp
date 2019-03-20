@@ -51,24 +51,6 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="tf-password" class=" form-control-label">Password</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="password" id="tf-password" name="tf-password" placeholder="" class="form-control" />
-                                                <span class="help-block">Fill your password</span>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="tf-password2" class=" form-control-label">Confirm Password</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="password" id="tf-password2" name="tf-password2" placeholder="" class="form-control" />
-                                                <span class="help-block">Confirm Your Password</span>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
                                                 <label for="tf-salary" class=" form-control-label">Salary</label>
                                             </div>
                                             <div class="col-12 col-md-9">

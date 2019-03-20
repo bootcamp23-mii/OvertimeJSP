@@ -28,6 +28,10 @@
         <!-- Bootstrap CSS-->
         <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
+<!--         Data Tables
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>-->
+
         <!-- Vendor CSS-->
         <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
         <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
@@ -41,4 +45,9 @@
         <link href="css/theme.css" rel="stylesheet" media="all">
 
     </head>
+    <script>
+        $(document).ready(function () {
+            $('#userAccessTable').DataTable();
+        });
+    </script>
 </html>

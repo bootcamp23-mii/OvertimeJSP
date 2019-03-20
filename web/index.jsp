@@ -95,6 +95,5 @@
         <script src="js/main.js"></script>
         <script src="js/selfScript.js"></script>
     </body>
-
 </html>
 <!-- end document-->

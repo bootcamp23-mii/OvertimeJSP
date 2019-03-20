@@ -23,9 +23,9 @@ import org.hibernate.SessionFactory;
 public class NewClass {
 
     public static void main(String[] args) {
-//        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 //        OvertimeControllerInterface oc = new OvertimeController(sessionFactory);
-//        EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
+        EmployeeControllerInterface ec = new EmployeeController(sessionFactory);
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //
 //        String x = "2019/02/13";

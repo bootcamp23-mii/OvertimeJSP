@@ -42,8 +42,8 @@
                             <div>
                                 <select class="custom-select" name="UAjob" id="UAjob"><% for (Job elem : (List<Job>) session.getAttribute("dataJob")) {
                                         out.print("<option "
-                                                + "value=\"" + elem.getPosition() + "\" "
-                                                + (elem.getPosition().equals(session.getAttribute("dataJob")) ? "selected" : "") + ">"
+                                                + "value=\"" + elem.getId() + "\" "
+                                                + (elem.getId().equals(session.getAttribute("dataJob")) ? "selected" : "") + ">"
                                                 + elem.getPosition()
                                                 + "</option>");
                                     }

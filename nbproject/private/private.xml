@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/login.jsp</url>
+            <bookmark id="1">
+                <name/>
+                <line>15</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/src/java/servlets/AdminServlet.java</file>
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/web/adminCreateUser.jsp</file>
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/web/request.jsp</file>
-            <file>file:/C:/Users/milhamafemi/Documents/Git-Hub/OvertimeJSP/web/adminUserAccess.jsp</file>
-=======
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/activationUser.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/login.jsp</file>
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/adminCreateUser.jsp</file>
             <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/index.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/status.jsp</file>
             <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/controllers/EmployeeController.java</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/web/history.jsp</file>
-            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/tools/NewClass.java</file>
->>>>>>> 3430fa4dd244c03a17740e90ddaff6d23153e3cf
+            <file>file:/C:/Users/Pandu/Documents/NetBeansProjects/OvertimeJSP/src/java/servlets/AdminServlet.java</file>
         </group>
     </open-files>
 </project-private>

@@ -91,6 +91,18 @@ public class Employee implements Serializable {
         this.site=site;
         this.manager=idmanager;        
     }
+     public Employee(String id, String name, String address, Integer salary, String email, String pass, Division division, Site site, Employee idmanager, Job job) {
+        this.id = id;
+        this.name=name;
+        this.address=address;
+        this.salary=salary;
+        this.email=email;
+        this.password=pass;
+        this.division=division;
+        this.site=site;
+        this.manager=idmanager;  
+        this.job=job;
+    }
 
     public Employee(String id, String name, Job job) {
         this.id = id;

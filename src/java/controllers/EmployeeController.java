@@ -36,6 +36,15 @@ public class EmployeeController implements EmployeeControllerInterface {
         }
         return "Maaf coba lagi";
     }
+    
+    @Override
+    public String register2(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager, String job) {
+        String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, passwordHash, new Division(division), new Site(site), new Employee(idManager), new Job(job)), true)) {
+            return "Selamat penambahan karyawan berhasil";
+        }
+        return "Maaf coba lagi";
+    }
 
     @Override
     public String insertOrUpdate(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager) {

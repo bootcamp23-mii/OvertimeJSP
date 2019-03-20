@@ -40,10 +40,10 @@
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Job</label>
                             <div>
-                                <select class="custom-select" name="UAjob" id="UAjob"><% for (Job elem : (List<Job>) session.getAttribute("dataJob")) {
+                                <select class="custom-select" name="UAjob" id="UAjob" ><% for (Job elem : (List<Job>) session.getAttribute("dataJob")) {
                                         out.print("<option "
                                                 + "value=\"" + elem.getId() + "\" "
-                                                + (elem.getId().equals(session.getAttribute("dataJob")) ? "selected" : "") + ">"
+                                                + (elem.getId().equals(session.getAttribute("UAjob")) ? "selected" : "") + ">"
                                                 + elem.getPosition()
                                                 + "</option>");
                                     }

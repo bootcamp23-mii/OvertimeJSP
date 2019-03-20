@@ -96,7 +96,7 @@ public class AdminServlet extends HttpServlet {
                 Employee employee = ec.getById(request.getParameter("id"));
                 request.getSession().setAttribute("UAid", employee.getId());
                 request.getSession().setAttribute("UAname", employee.getName());
-                request.getSession().setAttribute("dataJob", employee.getJob().getPosition());
+                request.getSession().setAttribute("UAjob", employee.getJob().getPosition());
             }
         }
         processRequest(request, response);

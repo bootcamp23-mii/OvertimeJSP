@@ -32,7 +32,7 @@
                     <div class="modal-body">
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">ID</label>
-                            <input type="text" id="SotId" name="SotId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
+                            <input type="text" disabled id="SotId" name="SotId" class="form-control" value=<%= (session.getAttribute("otId") != null) ? session.getAttribute("otId") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Date</label>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="">Time Sheet</label>
-                            <input type="text" id="Stimesheet" name="Stimesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
+                            <input type="text" id="Stimesheet" disabled name="Stimesheet" class="form-control" value=<%= (session.getAttribute("timesheet") != null) ? session.getAttribute("timesheet") : ""%>>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -97,13 +97,13 @@ public class AdminServlet extends HttpServlet {
                 request.getSession().setAttribute("UAid", employee.getId());
                 request.getSession().setAttribute("UAname", employee.getName());
                 request.getSession().setAttribute("UAaddress", employee.getAddress());
-                request.getSession().setAttribute("UAsalary", employee.getSalary().toString());
+                request.getSession().setAttribute("UAsalary", employee.getSalary());
                 request.getSession().setAttribute("UAemail", employee.getEmail());
                 request.getSession().setAttribute("UApassword", employee.getPassword());
                 request.getSession().setAttribute("UAdivison", employee.getDivision().getId());
                 request.getSession().setAttribute("UAsite", employee.getSite().getId());
                 request.getSession().setAttribute("UAmanager", employee.getManager().getId());
-                request.getSession().setAttribute("UAjobs", employee.getJob().getId());
+                request.getSession().setAttribute("UAjob", employee.getJob().getId());
             }
         }
         processRequest(request, response);
@@ -125,8 +125,11 @@ public class AdminServlet extends HttpServlet {
             ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), request.getParameter("tf-password"), request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job"));
             processRequest(request, response);
         } else if ("updateJob".equals(actionb)) {
-            ec.insertOrUpdate(
-                    request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAaddress"), "789788", "lol@gmauil.com", request.getParameter("UApassword"), request.getParameter("UAdivison"), request.getParameter("UAsite"), request.getParameter("UAmanager"), "JOB03");
+            ec.register2(
+                    request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAaddress")
+                    , request.getParameter("UAsalary"), request.getParameter("UAemail"), request.getParameter("UApassword")
+                    , request.getParameter("UAdivison"), request.getParameter("UAsite")
+                    , request.getParameter("UAmanager"), request.getParameter("UAjob"));
             processRequest(request, response);
         }
 

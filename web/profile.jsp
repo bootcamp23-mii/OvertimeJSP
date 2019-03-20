@@ -18,38 +18,38 @@
             <form action="mail" method="post">
                 <div class="row">
                     <div class="col-lg-12">
-                            <div class="row m-t-45">
-                            </div>
+                        <div class="row m-t-45">
+                        </div>
                         <div class="au-card recent-report">
 
                             <div class="au-card-inner">
-                                <h3 class="title-1">PROFILE</h3>
-                                <div class="chart-info">
-                                    <div class="chart-info">
-                                        <label class="label">Your Name</label>
-                                        <label
-                                            name="subject"><%= (session.getAttribute("empname") != null) ? session.getAttribute("empname") : ""%></label>
+                                <div>
+                                    <h3 class="h1">PROFILE</h3>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label data-error="wrong" data-success="true" class="">Your Name </label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <label name="subject"> :    <%= (session.getAttribute("empname") != null) ? session.getAttribute("empname") : ""%></label>
                                     </div>
                                 </div>
-                                <div class="chart-info">
-                                    <div class="chart-info">
-                                        <label class="label">Your Email :</label>
-                                        <label
-                                            name="to"><%= (session.getAttribute("empemail") != null) ? session.getAttribute("empemail") : ""%></label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label data-error="wrong" data-success="true" class="">Your ID </label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <label name="subject"> :    <%= (session.getAttribute("empid") != null) ? session.getAttribute("empid") : ""%></label>
                                     </div>
                                 </div>
-                                <div class="chart-info">
-                                    <label>Your ID</label>
-                                    <label
-                                        name="myid"><%= (session.getAttribute("empid") != null) ? session.getAttribute("empid") : ""%></label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label data-error="wrong" data-success="true" class="">Your Email </label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <label name="subject"> :    <%= (session.getAttribute("empemail") != null) ? session.getAttribute("empemail") : ""%></label>
+                                    </div>
                                 </div>
-                                <div class="chart-info">
-                                    <input type="text" name="message" placeholder="Your Message" /><br />
-                                    <input type="text" name="user" placeholder="Your Email"><br />
-                                    <input type="password" name="pass" placeholder="Password" /><br />
-                                </div>
-                                <!--<button type="button" class="btn btn-success" value="send">Confirm Data</button>-->
-                                <input type="submit" class="btn-success" value="send" />
                             </div>
                         </div>
                     </div>

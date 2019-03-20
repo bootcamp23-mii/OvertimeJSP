@@ -31,13 +31,41 @@
                     <div class="modal-body">
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="label">ID</label>
-                            <input type="text" id="UAid" name="UAid" class="form-control" value=<%= (session.getAttribute("UAid") != null) ? session.getAttribute("UAid") : ""%>>
+                            <input type="text" id="UAid" name="UAid" disabled class="form-control" value=<%= (session.getAttribute("UAid") != null) ? session.getAttribute("UAid") : ""%>>
                         </div>
                         <div class="md-form mb-2">
                             <label data-error="wrong" data-success="true" class="label">Name</label>
-                            <input type="text" id="UAname" name="UAname" class="form-control" value=<%= (session.getAttribute("UAname") != null) ? session.getAttribute("UAname") : ""%>>
+                            <input type="text" id="UAname" name="UAname" disabled class="form-control" value=<%= (session.getAttribute("UAname") != null) ? session.getAttribute("UAname") : ""%>>
                         </div>
                         <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Address</label>
+                            <input type="text" id="UAaddress" name="UAaddress" disabled class="form-control" value=<%= (session.getAttribute("UAaddress") != null) ? session.getAttribute("UAaddress") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Salary</label>
+                            <input type="text" id="UAsalary" name="UAsalary" disabled class="form-control" value=<%= (session.getAttribute("UAsalary") != null) ? session.getAttribute("UAsalary") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Email</label>
+                            <input type="text" id="UAemail" name="UAemail" disabled class="form-control" value=<%= (session.getAttribute("UAemail") != null) ? session.getAttribute("UAemail") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Password</label>
+                            <input type="password" id="UApassword" disabled name="UApassword" class="form-control" value=<%= (session.getAttribute("UApassword") != null) ? session.getAttribute("UApassword") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Name</label>
+                            <input type="text" id="UAdivison" name="UAdivison" disabled class="form-control" value=<%= (session.getAttribute("UAdivison") != null) ? session.getAttribute("UAdivison") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Name</label>
+                            <input type="text" id="UAsite" name="UAsite" disabled class="form-control" value=<%= (session.getAttribute("UAsite") != null) ? session.getAttribute("UAsite") : ""%>>
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="true" class="label">Name</label>
+                            <input type="text" id="UAmanager" name="UAmanager" class="form-control" disabled value=<%= (session.getAttribute("UAmanager") != null) ? session.getAttribute("UAmanager") : ""%> >
+                        </div>
+                        <div class="md-form mb-2"
                             <label data-error="wrong" data-success="true" class="">Job</label>
                             <div>
                                 <select class="custom-select" name="UAjob" id="UAjob" ><% for (Job elem : (List<Job>) session.getAttribute("dataJob")) {
@@ -101,6 +129,13 @@
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUserAccess" 
                                                             data-ugetid="<%= elem.getId()%>" 
                                                             data-ugetname="<%= elem.getName()%>" 
+                                                            data-ugetaddress="<%= elem.getAddress()%>" 
+                                                            data-ugetsalary="<%= elem.getSalary()%>" 
+                                                            data-ugetemail="<%= elem.getEmail()%>" 
+                                                            data-ugetpassword="<%= elem.getPassword()%>" 
+                                                            data-ugetdivision="<%= elem.getDivision().getId() %>" 
+                                                            data-ugetsite="<%= elem.getSite().getId() %>" 
+                                                            data-ugetmanager="<%= elem.getManager().getId() %>" 
                                                             data-ugetjob="<%= elem.getJob().getId()%>" 
                                                             ><i class="fas fa-edit"></i></button>
                                                 </td>
@@ -124,11 +159,25 @@
             var button = $(event.relatedTarget)
             var id = button.data('ugetid')
             var name = button.data('ugetname')
+            var address = button.data('ugetaddress')
+            var salary = button.data('ugetsalary')
+            var email = button.data('ugetemail')
+            var password = button.data('ugetpassword')
+            var division = button.data('ugetdivision')
+            var site = button.data('ugetsite')
+            var manager = button.data('ugetmanager')
             var job = button.data('ugetjob')
 
             var modal = $(this)
             modal.find('#UAid').val(id)
             modal.find('#UAname').val(name)
+            modal.find('#UAaddress').val(address)
+            modal.find('#UAsalary').val(salary)
+            modal.find('#UAemail').val(email)
+            modal.find('#UApassword').val(password)
+            modal.find('#UAdivison').val(division)
+            modal.find('#UAsite').val(site)
+            modal.find('#UAmanager').val(manager)
             modal.find('#UAjob').val(job)
         })
     </script>

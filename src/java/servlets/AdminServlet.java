@@ -17,6 +17,7 @@ import controllers.SiteControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -113,10 +114,21 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), request.getParameter("tf-password"), request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job")) != null) {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 5) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+
+        String Emp = "EMP";
+        String saltStr = salt.toString();
+        String newpw = Emp + saltStr;
+
+        if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), newpw, request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job"), 0).equals("INSERTEDNEW")) {
             processRequest(request, response);
-        } else if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAjob")
-        ) != null) {
+        } else if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAjob")) != null) {
             processRequest(request, response);
         }
     }

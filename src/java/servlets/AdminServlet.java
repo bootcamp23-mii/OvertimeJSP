@@ -11,6 +11,7 @@ import controllers.EmployeeController;
 import controllers.EmployeeControllerInterface;
 import controllers.JobController;
 import controllers.JobControllerInterface;
+import controllers.SendMail;
 import controllers.SiteController;
 import controllers.SiteControllerInterface;
 import java.io.IOException;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Division;
 import models.Employee;
 import models.Job;
+import models.SendEmailTemp;
 import models.Site;
 import tools.HibernateUtil;
 

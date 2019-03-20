@@ -111,12 +111,10 @@
                                         <button class="btn au-btn au-btn-icon au-btn--blue">
                                             <i class="zmdi"></i>History</button>
                                     </div> 
-                                    <form action="SendEmailServlet" method="POST">
                                     <div class="chart-note">
                                         <button class="btn au-btn au-btn-icon au-btn--blue" type="submit">
-                                        <i class="zmdi"></i>SEND</button>
+                                            <i class="zmdi"></i>SEND</button>
                                     </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

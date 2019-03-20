@@ -114,7 +114,7 @@
                                                             data-getts="<%= elem.getTimesheet().getId()%>"
                                                             data-getstatus="<%= elem.getStatus().getStatus()%>" 
                                                             ><i class="fas fa-edit"></i></button>
-                                                    <button type="button" class="btn btn-danger" href="StatusServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-danger" href="StatusServlet?action=delete&id=<%= elem.getId()%>"><i class="fas fa-ban"></i></button>
                                                         <%} else {%>
                                                     <button type="button" disabled="true" class="btn btn-dark">CONFIRMED</button>
                                                     <%}%>

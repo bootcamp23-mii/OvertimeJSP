@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" value="updateJob" name="updateJob" >SAVE CHANGE</button>
+                        <button class="btn btn-primary" type="submit" value="updateJob" name="buttonAction" >SAVE CHANGE</button>
                     </div>
                 </div>
             </div>
@@ -99,9 +99,9 @@
                                                 <td><%= elem.getJob().getPosition()%></td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUserAccess" 
-                                                            data-getid="<%= elem.getId()%>" 
-                                                            data-getname="<%= elem.getName()%>" 
-                                                            data-getjob="<%= elem.getJob().getPosition()%>" 
+                                                            data-ugetid="<%= elem.getId()%>" 
+                                                            data-ugetname="<%= elem.getName()%>" 
+                                                            data-ugetjob="<%= elem.getJob().getId()%>" 
                                                             ><i class="fas fa-edit"></i></button>
                                                 </td>
                                             </tr>
@@ -122,9 +122,9 @@
     <script>
         $('#modalUserAccess').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
-            var id = button.data('getid')
-            var name = button.data('getname')
-            var job = button.data('getjob')
+            var id = button.data('ugetid')
+            var name = button.data('ugetname')
+            var job = button.data('ugetjob')
 
             var modal = $(this)
             modal.find('#UAid').val(id)

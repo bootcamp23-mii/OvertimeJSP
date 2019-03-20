@@ -17,7 +17,6 @@ import controllers.SiteControllerInterface;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -93,11 +92,18 @@ public class AdminServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action != null) {
-            if (action.equalsIgnoreCase("update")) {
+            if (action.equalsIgnoreCase("updateJob")) {
                 Employee employee = ec.getById(request.getParameter("id"));
                 request.getSession().setAttribute("UAid", employee.getId());
                 request.getSession().setAttribute("UAname", employee.getName());
-                request.getSession().setAttribute("UAjob", employee.getJob().getPosition());
+                request.getSession().setAttribute("UAaddress", employee.getAddress());
+                request.getSession().setAttribute("UAsalary", employee.getSalary().toString());
+                request.getSession().setAttribute("UAemail", employee.getEmail());
+                request.getSession().setAttribute("UApassword", employee.getPassword());
+                request.getSession().setAttribute("UAdivison", employee.getDivision().getId());
+                request.getSession().setAttribute("UAsite", employee.getSite().getId());
+                request.getSession().setAttribute("UAmanager", employee.getManager().getId());
+                request.getSession().setAttribute("UAjobs", employee.getJob().getId());
             }
         }
         processRequest(request, response);
@@ -114,23 +120,29 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        while (salt.length() < 5) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
-        }
-
-        String Emp = "EMP";
-        String saltStr = salt.toString();
-        String newpw = Emp + saltStr;
-
-        if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), newpw, request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job"), 0).equals("INSERTEDNEW")) {
+        String actionb = request.getParameter("buttonAction");
+        if ("create".equals(actionb)) {
+            ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), request.getParameter("tf-password"), request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job"));
             processRequest(request, response);
-        } else if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAjob")) != null) {
+        } else if ("updateJob".equals(actionb)) {
+            ec.insertOrUpdate(
+                    request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAaddress"), "789788", "lol@gmauil.com", request.getParameter("UApassword"), request.getParameter("UAdivison"), request.getParameter("UAsite"), request.getParameter("UAmanager"), "JOB03");
             processRequest(request, response);
         }
+
+//                    request.getParameter("UAid"), request.getParameter("UAname"), 
+//                    request.getParameter("UAaddress"), request.getParameter("UAsalary"),
+//                    request.getParameter("UAemail"), request.getParameter("UApassword"), 
+//                    request.getParameter("UAdivison"), request.getParameter("UAsite"),
+//                     request.getParameter("UAmanager"), request.getParameter("UAjob"));
+//            processRequest(request, response);
+//        (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), request.getParameter("tf-password"), request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job")).equals("INSERTNEW")) {
+//            processRequest(request, response);
+//        }else if(ec.insertOrUpdate(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAaddress"), request.getParameter("UAsalary"), 
+//                request.getParameter("UAemail"), request.getParameter("UApassword"), request.getParameter("UAdivison"), request.getParameter("UAsite")
+//                ,request.getParameter("UAmanager"), request.getParameter("UAjob"))!= null){
+//            processRequest(request, response);
+//        }
     }
 
     /**

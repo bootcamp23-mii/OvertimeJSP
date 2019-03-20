@@ -36,9 +36,10 @@ public class NewClass {
         System.out.println(passwordHash);
         String passwordHash2 = BCrypt.hashpw(password, BCrypt.gensalt());
         System.out.println(passwordHash2);
-        
+
         System.out.println(BCrypt.checkpw(password2, passwordHash));
         System.out.println(BCrypt.checkpw(password, passwordHash2));
+
 //        System.out.println(oc.getById("EMP5"));
 //        System.out.println(oc.totOver("EMP01"));
 //        System.out.println(oc.update("OVT19", dt, "2", "NGANTUK NGGA SIH", "TSH7", "STA02"));

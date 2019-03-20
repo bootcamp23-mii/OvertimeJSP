@@ -5,6 +5,9 @@
  */
 package servlets;
 
+import controllers.EmailController;
+import controllers.EmailInterface;
+import controllers.SendMail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.SendEmailTemp;
 
 /**
  *
@@ -19,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "SendEmailServlet", urlPatterns = {"/SendEmailServlet"})
 public class SendEmailServlet extends HttpServlet {
+
+    EmailInterface emailInterface = new EmailController();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +39,7 @@ public class SendEmailServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SendEmailServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SendEmailServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            response.sendRedirect("index.jsp");
         }
     }
 
@@ -72,6 +69,18 @@ public class SendEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SendEmailTemp.setToEmail("pandu4431@gmail.com");
+        SendEmailTemp.setMessage("<html>\n" +
+                "<body>\n" +
+                "\n" +
+                "<a href=\"http://pushpalankajaya.blogspot.com\">\n" +
+                "<button>YOLO YOLO<button></a>\n" +
+                "\n" +
+                "</body>\n" +
+                "</html>");
+        SendEmailTemp.setSubject("TESTING MAIL");
+//        emailInterface.sendEmail();
+        new SendMail().generate();  
         processRequest(request, response);
     }
 

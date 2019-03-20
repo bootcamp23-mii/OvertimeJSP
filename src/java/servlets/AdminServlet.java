@@ -121,14 +121,14 @@ public class AdminServlet extends HttpServlet {
             int index = (int) (rnd.nextFloat() * SALTCHARS.length());
             salt.append(SALTCHARS.charAt(index));
         }
+
         String Emp = "EMP";
         String saltStr = salt.toString();
         String newpw = Emp + saltStr;
 
-        if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), newpw, request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job")) != null) {
+        if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), newpw, request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job"), 0).equals("INSERTEDNEW")) {
             processRequest(request, response);
-        } else if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAjob")
-        ) != null) {
+        } else if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAjob")) != null) {
             processRequest(request, response);
         }
     }

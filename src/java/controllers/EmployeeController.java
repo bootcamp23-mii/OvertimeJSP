@@ -39,15 +39,16 @@ public class EmployeeController implements EmployeeControllerInterface {
     }
 
     @Override
-    public String register2(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager, String job) {
+    public String register2(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager, String job, int active) {
         String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
         String passwordHash2 = BCrypt.hashpw(password, BCrypt.gensalt());
-        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, passwordHash, new Division(division), new Site(site), new Employee(idManager), new Job(job)), true)) {
+        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, passwordHash, new Division(division), new Site(site), new Employee(idManager), new Job(job), active), true)) {
+            String newm = email.split("@")[0];
             SendEmailTemp.setToEmail(email);
             SendEmailTemp.setMessage("<html>\n"
                     + "<body>\n"
                     + "\n"
-                    + "<a href=\"http://localhost:8084/OvertimeJSP/activationUser.jsp?namelink=" + nama + "&hash=" + passwordHash2 + "\">\n"
+                    + "<a href=\"http://localhost:8084/OvertimeJSP/activationUser.jsp?namelink=" + newm + "&hash=" + passwordHash2 + "\">\n"
                     + "<button>YOLO YOLO<button></a>\n"
                     + "\n"
                     + "</body>\n"
@@ -55,15 +56,15 @@ public class EmployeeController implements EmployeeControllerInterface {
             SendEmailTemp.setSubject("ACTIVATE YOUR ACCOUNT");
             new SendMail().generate();
 
-            return "Selamat penambahan karyawan berhasil";
+            return "INSERTEDNEW";
         }
         return "Maaf coba lagi";
     }
 
     @Override
-    public String insertOrUpdate(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager) {
-        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, password, new Division(division), new Site(site), new Employee(idManager)), true)) {
-            return "Selamat Data berhasil simpan";
+    public String insertOrUpdate(String id, String nama, String address, String salary, String email, String password, String division, String site, String idManager, String job, int active) {
+        if (dao.saveOrDelete(new Employee(id, nama, address, new Integer(salary), email, password, new Division(division), new Site(site), new Employee(idManager), new Job(job), active), true)) {
+            return "GOTNEW";
         }
         return "Maaf Data gagal disimpan";
     }

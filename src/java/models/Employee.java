@@ -40,6 +40,14 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password")})
 public class Employee implements Serializable {
 
+    @Lob
+    @Column(name = "photo")
+    private byte[] photo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<TimeSheet> timeSheetList;
+    @Column(name = "active")
+    private Integer active;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -55,9 +63,6 @@ public class Employee implements Serializable {
     private String email;
     @Column(name = "password")
     private String password;
-    @Lob
-    @Column(name = "photo")
-    private byte[] photo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager", fetch = FetchType.LAZY)
     private List<Employee> employeeList;
     @JoinColumn(name = "manager", referencedColumnName = "id")
@@ -91,7 +96,7 @@ public class Employee implements Serializable {
         this.site=site;
         this.manager=idmanager;        
     }
-     public Employee(String id, String name, String address, Integer salary, String email, String pass, Division division, Site site, Employee idmanager, Job job) {
+     public Employee(String id, String name, String address, Integer salary, String email, String pass, Division division, Site site, Employee idmanager, Job job, int active) {
         this.id = id;
         this.name=name;
         this.address=address;
@@ -102,6 +107,7 @@ public class Employee implements Serializable {
         this.site=site;
         this.manager=idmanager;  
         this.job=job;
+        this.active=active;
     }
 
     public Employee(String id, String name, Job job) {
@@ -159,13 +165,6 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
 
     @XmlTransient
     public List<Employee> getEmployeeList() {
@@ -231,6 +230,33 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "models.Employee[ id=" + id + " ]";
+    }
+
+
+    public Integer getActive() {
+        return active;
+    }
+
+    public void setActive(Integer active) {
+        this.active = active;
+    }
+
+
+    @XmlTransient
+    public List<TimeSheet> getTimeSheetList() {
+        return timeSheetList;
+    }
+
+    public void setTimeSheetList(List<TimeSheet> timeSheetList) {
+        this.timeSheetList = timeSheetList;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
     
 }

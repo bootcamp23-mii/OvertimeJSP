@@ -36,9 +36,9 @@ public class AdminServlet extends HttpServlet {
 
     EmployeeControllerInterface ec = new EmployeeController(HibernateUtil.getSessionFactory());
     JobControllerInterface jc = new JobController(HibernateUtil.getSessionFactory());
-    DivisionControllerInterface dc= new DivisionController(HibernateUtil.getSessionFactory());
-    SiteControllerInterface sc= new SiteController(HibernateUtil.getSessionFactory());
-    
+    DivisionControllerInterface dc = new DivisionController(HibernateUtil.getSessionFactory());
+    SiteControllerInterface sc = new SiteController(HibernateUtil.getSessionFactory());
+
     List<Employee> dataEmp = null;
     List<Job> dataJob = null;
     List<Site> dataSite = null;
@@ -61,7 +61,7 @@ public class AdminServlet extends HttpServlet {
             dataJob = jc.getAll();
             dataDiv = dc.getAll();
             dataSite = sc.getAll();
-            
+
             request.getSession().setAttribute("dataJob", dataJob);
             request.getSession().setAttribute("dataEmp", dataEmp);
             request.getSession().setAttribute("dataDiv", dataDiv);
@@ -111,10 +111,10 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("dataJob")
-        ) != null) {
+        if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), request.getParameter("tf-password"), request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01", request.getParameter("cb-job")) != null) {
             processRequest(request, response);
-        } else if (ec.register2("ID", request.getParameter("tf-name"), request.getParameter("tf-address"), request.getParameter("tf-salary"), request.getParameter("tf-email"), request.getParameter("tf-password"), request.getParameter("cb-division"), request.getParameter("cb-site"), "EMP01",request.getParameter("cb-job")) != null) {
+        } else if (ec.updateJob(request.getParameter("UAid"), request.getParameter("UAname"), request.getParameter("UAjob")
+        ) != null) {
             processRequest(request, response);
         }
     }
